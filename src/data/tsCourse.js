@@ -1,941 +1,364 @@
-export const tsCourseData = {
-  title: "TypeScript Fundamentals",
-  description: "Освойте TypeScript від основ до просунутих концепцій. Навчіться створювати типобезпечні застосунки з кращою підтримуваністю та меншою кількістю помилок.",
-  level: "Beginner to Advanced",
-  duration: "~10 hours",
+export const typescriptCourseData = {
+  title: "Основи TypeScript",
+  description: "Вивчіть TypeScript від основ до просунутих концепцій. Комплексний курс, який навчить вас створювати типобезпечні та масштабовані JavaScript додатки.",
+  level: "Від початкового до просунутого",
+  duration: "~12 годин",
   prerequisites: "JavaScript ES6+, основи програмування",
   certificate: "Доступний після завершення",
   topics: [
     {
       id: 1,
       title: "Введення в TypeScript",
-      difficulty: "Beginner",
-      duration: "30 min",
+      difficulty: "Початковий",
+      duration: "30 хв",
       completed: true,
-      description: "Дізнайтеся, що таке TypeScript, його переваги та як почати розробку.",
+      description: "Дізнайтеся, що таке TypeScript, його переваги та як почати з ним працювати.",
       learningPoints: [
-        "Що таке TypeScript та його призначення",
-        "Основні переваги статичної типізації",
-        "Встановлення та налаштування",
-        "Перший TypeScript файл"
+        "Що таке TypeScript та навіщо він потрібен",
+        "Статична типізація vs динамічна",
+        "Виведення типів (type inference)",
+        "Налаштування середовища розробки",
+        "Компіляція TypeScript в JavaScript"
       ],
       theory: {
-        "Що таке TypeScript": "TypeScript - це мова програмування, розроблена Microsoft, яка є надмножиною JavaScript. Основна ідея полягає в додаванні статичної типізації до JavaScript.",
-        "Основні переваги": `1. Раннє виявлення помилок на етапі розробки
-2. Краще автодоповнення в редакторах коду
-3. Покращена читабельність та підтримуваність коду
-4. Можливість використання сучасних можливостей JavaScript
-5. Поступова міграція з JavaScript проектів`,
-        "Статична типізація": "На відміну від JavaScript, де тип змінної визначається під час виконання, TypeScript дозволяє оголошувати типи змінних заздалегідь.",
-        "Компіляція": "TypeScript компілюється в звичайний JavaScript, який може виконуватися в будь-якому середовищі JavaScript."
-      },
-      codeExample: `// Встановлення TypeScript
-npm install -g typescript
-
-// Компіляція файлу
-tsc app.ts
-
-// Базовий TypeScript код
-let message: string = "Hello TypeScript!";
-let count: number = 42;
-let isActive: boolean = true;
-
-// Функція з типізацією
-function greet(name: string): string {
-  return \`Hello, \${name}!\`;
-}
-
-// Виклик функції
-console.log(greet("World")); // Hello, World!
-
-// JavaScript еквівалент після компіляції
-// let message = "Hello TypeScript!";
-// let count = 42;
-// let isActive = true;`
+        "Що таке TypeScript": "TypeScript - це мова програмування, яка є надмножиною JavaScript. Основна ідея полягає в додаванні статичної типізації до JavaScript. Тобто, перевіряє типи під час компіляції, а не під час виконання, як JavaScript. Розроблений Microsoft, TypeScript компілюється в чистий JavaScript.",
+        "Статична типізація": "TypeScript дозволяє оголошувати типи змінних заздалегідь, на відміну від JavaScript. Це допомагає виявляти помилки на етапі розробки, покращує читабельність коду та надає кращу підтримку інструментів розробки.",
+        "Виведення типів": "TypeScript може автоматично визначати тип змінної на основі присвоєного їй значення. Це означає, що не завжди потрібно явно вказувати типи - TypeScript може їх вивести самостійно.",
+        "Переваги TypeScript": "Раннє виявлення помилок, краща підтримка IDE (автодоповнення, рефакторинг), покращена читабельність коду, легше підтримувати великі проекти, сумісність з існуючим JavaScript кодом.",
+        "Компіляція": "TypeScript компілюється в JavaScript за допомогою компілятора tsc. Можна налаштувати різні версії JavaScript (ES5, ES6, ES2020 тощо) та різні модульні системи."
+      }
     },
     {
       id: 2,
-      title: "Система типів та примітивні типи",
-      difficulty: "Beginner",
-      duration: "40 min",
+      title: "Примітивні типи даних",
+      difficulty: "Початковий",
+      duration: "35 хв",
       completed: false,
-      description: "Вивчіть основні типи даних TypeScript та виведення типів.",
+      description: "Вивчіть основні типи даних у TypeScript та як з ними працювати.",
       learningPoints: [
-        "Примітивні типи TypeScript",
-        "Автоматичне виведення типів",
-        "Складні типи: масиви, об'єкти",
-        "Анотації типів"
+        "Числові типи (number, bigint)",
+        "Текстові типи (string)",
+        "Логічний тип (boolean)",
+        "Типи null та undefined",
+        "Символи (symbol)",
+        "Масиви та кортежі (tuple)"
       ],
       theory: {
-        "Примітивні типи": `TypeScript підтримує всі примітивні типи JavaScript:
-• number - для чисел (цілих та дробових)
-• string - для текстових даних
-• boolean - для логічних значень
-• null - представляє відсутність значення
-• undefined - значення, яке ще не було присвоєно
-• symbol - унікальний ідентифікатор
-• bigint - для великих цілих чисел`,
-        "Виведення типів": "TypeScript може автоматично визначати тип змінної на основі присвоєного їй значення. Наприклад, якщо ви присвоюєте змінній число, TypeScript автоматично визначить її як тип number.",
-        "Складні типи": `• Array - масив елементів одного типу
-• Tuple - масив фіксованої довжини з елементами різних типів
-• Object - об'єкт з визначеними властивостями та їх типами
-• Function - функція з типізованими параметрами та поверненим значенням`
-      },
-      codeExample: `// Примітивні типи
-let age: number = 25;
-let name: string = "John";
-let isStudent: boolean = true;
-let data: null = null;
-let value: undefined = undefined;
-
-// Автоматичне виведення типів
-let autoNumber = 42;        // number
-let autoString = "hello";   // string
-let autoBool = true;        // boolean
-
-// Масиви
-let numbers: number[] = [1, 2, 3];
-let names: Array<string> = ["Alice", "Bob"];
-
-// Tuple (кортеж)
-let user: [string, number] = ["John", 25];
-
-// Об'єкт
-let person: {
-  name: string;
-  age: number;
-} = {
-  name: "Alice",
-  age: 30
-};
-
-// Функція
-function add(a: number, b: number): number {
-  return a + b;
-}
-
-// Стрілкова функція
-const multiply = (x: number, y: number): number => x * y;`
+        "Числові типи": "number - для всіх чисел (цілих та з плаваючою точкою). bigint - для великих цілих чисел, які перевищують межі number. TypeScript автоматично визначає тип числа на основі значення.",
+        "Текстові дані": "string - для текстових даних. Підтримує звичайні рядки, шаблонні рядки (template literals) та всі методи JavaScript для роботи з рядками.",
+        "Логічний тип": "boolean - для логічних значень true або false. Використовується в умовних конструкціях та логічних операціях.",
+        "Відсутність значення": "null - явна відсутність значення. undefined - значення, яке ще не було присвоєно. TypeScript має спеціальні налаштування для роботи з цими типами.",
+        "Символи": "symbol - унікальний ідентифікатор. Кожен символ є унікальним, навіть якщо створений з однаковим описом. Використовується для створення унікальних ключів об'єктів.",
+        "Масиви": "array - масив елементів одного типу. Можна оголошувати як Type[] або Array<Type>. TypeScript перевіряє, що всі елементи масиву відповідають зазначеному типу.",
+        "Кортежі": "tuple - масив фіксованої довжини з елементами різних типів. Дозволяє точно визначити типи елементів на кожній позиції."
+      }
     },
     {
       id: 3,
       title: "Спеціальні типи TypeScript",
-      difficulty: "Beginner",
-      duration: "35 min",
+      difficulty: "Початковий",
+      duration: "40 хв",
       completed: false,
-      description: "Розуміння спеціальних типів: any, unknown, void, never.",
+      description: "Дізнайтеся про спеціальні типи TypeScript: any, unknown, void, never.",
       learningPoints: [
         "Тип any та його використання",
         "Unknown як безпечна альтернатива any",
         "Void для функцій без повернення",
-        "Never для неможливих значень"
+        "Never для неможливих значень",
+        "Коли використовувати кожен тип"
       ],
       theory: {
-        "Any": "Тип any відключає перевірку типів для змінної. Це найменш бажаний тип, оскільки він нівелює основні переваги TypeScript.",
-        "Unknown": "Більш безпечна альтернатива any. Змінна типу unknown може містити будь-яке значення, але перед використанням потрібно перевірити її тип.",
-        "Void": "Використовуються для функцій, які нічого не повертають. Це протилежність типу, який повертає значення.",
-        "Never": "Представляє тип значень, які ніколи не з'являються. Зазвичай використовується для функцій, які завжди викидають помилку або мають нескінченний цикл."
-      },
-      codeExample: `// Any - уникайте використання
-let anything: any = 42;
-anything = "hello";
-anything = true;
-
-// Unknown - безпечніший варіант
-let userInput: unknown = getData();
-if (typeof userInput === "string") {
-  console.log(userInput.toUpperCase());
-}
-
-// Void - функції без повернення
-function logMessage(msg: string): void {
-  console.log(msg);
-}
-
-// Never - функції, що не завершуються
-function throwError(message: string): never {
-  throw new Error(message);
-}
-
-function infiniteLoop(): never {
-  while (true) {
-    // нескінченний цикл
-  }
-}
-
-// Type guards з unknown
-function processValue(value: unknown) {
-  if (typeof value === "string") {
-    return value.length;
-  }
-  if (typeof value === "number") {
-    return value * 2;
-  }
-  return null;
-}`
+        "Тип any": "Тип any відключає перевірку типів для змінної. Використовується зазвичай при міграції з JavaScript або роботі з динамічним контентом. Слід уникати його використання, оскільки він нівелює переваги TypeScript.",
+        "Тип unknown": "Більш безпечна альтернатива any. Змінна типу unknown може містити будь-яке значення, але перед використанням потрібно перевірити її тип. Це забезпечує типобезпеку при роботі з невідомими даними.",
+        "Тип void": "Використовується для функцій, які нічого не повертають. Такі функції можуть повертати undefined або взагалі не мати оператора return.",
+        "Тип never": "Представляє тип значень, які ніколи не з'являються. Використовується для функцій, які завжди викидають помилку або мають нескінченний цикл. Також використовується в умовних типах для позначення неможливих варіантів.",
+        "Вибір правильного типу": "any - тільки при міграції або роботі з легасі кодом. unknown - для невідомих даних з подальшою перевіркою. void - для функцій без повернення значення. never - для функцій, які ніколи не завершуються нормально."
+      }
     },
     {
       id: 4,
-      title: "Union та Intersection типи",
-      difficulty: "Intermediate",
-      duration: "40 min",
+      title: "Об'єднання та перетин типів",
+      difficulty: "Середній",
+      duration: "45 хв",
       completed: false,
-      description: "Об'єднання та перетин типів для створення гнучких типових систем.",
+      description: "Навчіться створювати складні типи за допомогою об'єднання та перетину типів.",
       learningPoints: [
-        "Union types з оператором |",
-        "Intersection types з оператором &",
-        "Type guards та звуження типів",
+        "Union types (об'єднання типів)",
+        "Intersection types (перетин типів)",
+        "Type guards (захисники типів)",
+        "Дискримінантні об'єднання",
         "Практичні приклади використання"
       ],
       theory: {
-        "Union types": "Дозволяє змінній мати один з декількох можливих типів. Використовується оператор вертикальної риски (|). Це корисно, коли функція може приймати різні типи даних.",
-        "Intersection types": "Об'єднує декілька типів в один, використовуючи оператор амперсанд (&). Результуючий тип містить всі властивості всіх об'єднаних типів.",
-        "Type guards": "Механізм для звуження типів в union types. Дозволяє TypeScript зрозуміти, який саме тип використовується в конкретному блоці коду.",
-        "Discriminated unions": "Спеціальний вид union types з загальною властивістю-дискримінатором для розрізнення типів."
-      },
-      codeExample: `// Union types
-type StringOrNumber = string | number;
-let value: StringOrNumber = "hello";
-value = 42;
-
-function format(input: string | number): string {
-  if (typeof input === "string") {
-    return input.toUpperCase();
-  }
-  return input.toString();
-}
-
-// Intersection types
-type Person = { name: string };
-type Employee = { id: number };
-type Staff = Person & Employee;
-
-let worker: Staff = {
-  name: "John",
-  id: 123
-};
-
-// Discriminated Union
-type Circle = { kind: "circle"; radius: number };
-type Square = { kind: "square"; side: number };
-type Shape = Circle | Square;
-
-function getArea(shape: Shape): number {
-  switch (shape.kind) {
-    case "circle":
-      return Math.PI * shape.radius ** 2;
-    case "square":
-      return shape.side ** 2;
-  }
-}
-
-// Type guards
-function isString(value: unknown): value is string {
-  return typeof value === "string";
-}
-
-if (isString(userInput)) {
-  console.log(userInput.length); // TypeScript знає, що це string
-}`
+        "Об'єднання типів": "Об'єднання типів (union types) дозволяє змінній мати один з декількох можливих типів. Використовується оператор вертикальної риски (|). Корисно, коли функція може приймати різні типи даних або коли потрібно обробити кілька можливих варіантів.",
+        "Перетин типів": "Перетин типів (intersection types) об'єднує декілька типів в один, використовуючи оператор амперсанд (&). Результуючий тип містить всі властивості всіх об'єднаних типів. Корисно для створення складних типів з простих.",
+        "Захисники типів": "Type guards - це техніки для звуження типів у TypeScript. Дозволяють TypeScript зрозуміти, який саме тип має змінна в конкретному блоку коду. Включають typeof, instanceof, in оператори та користувацькі type guards.",
+        "Дискримінантні об'єднання": "Спеціальний вид union types, де кожен тип має унікальну властивість (дискримінант), що дозволяє TypeScript точно визначити тип. Часто використовується в Redux actions та state machines.",
+        "Практичне застосування": "Union types корисні для API відповідей, обробки різних форматів даних, опціональних параметрів. Intersection types - для міксинів, розширення інтерфейсів, комбінування поведінок."
+      }
     },
     {
       id: 5,
-      title: "Інтерфейси та типи",
-      difficulty: "Intermediate",
-      duration: "50 min",
+      title: "Інтерфейси (Interfaces)",
+      difficulty: "Середній",
+      duration: "50 хв",
       completed: false,
-      description: "Створення складних типових структур за допомогою інтерфейсів та type aliases.",
+      description: "Опануйте створення та використання інтерфейсів для опису структури об'єктів.",
       learningPoints: [
-        "Оголошення та використання інтерфейсів",
-        "Опціональні та readonly властивості",
+        "Основи створення інтерфейсів",
+        "Опціональні властивості",
+        "Readonly властивості",
         "Розширення інтерфейсів",
-        "Відмінності між interface та type"
+        "Індексні сигнатури"
       ],
       theory: {
-        "Інтерфейси": "Інтерфейси описують структуру об'єктів. Вони визначають, які властивості повинен мати об'єкт, їх типи та чи є вони обов'язковими.",
-        "Можливості інтерфейсів": `• Опціональні властивості (позначаються знаком питання)
-• Readonly властивості (не можна змінювати після створення)
-• Розширення інтерфейсів (наслідування від інших інтерфейсів)
-• Індексні сигнатури (для об'єктів з динамічними ключами)`,
-        "Types": "Типи схожі на інтерфейси, але мають більше можливостей. Вони можуть описувати не тільки структуру об'єктів, але й об'єднання типів, примітивні типи тощо.",
-        "Interface vs Type": `• Type може описувати примітивні типи, об'єднання, кортежі
-• Interface краще підходить для опису об'єктів
-• Interface можна розширювати декларативно
-• Type більш гнучкий для складних типів`
-      },
-      codeExample: `// Базовий інтерфейс
-interface User {
-  name: string;
-  age: number;
-  email?: string;        // опціональна властивість
-  readonly id: number;   // тільки для читання
-}
-
-let user: User = {
-  id: 1,
-  name: "John",
-  age: 30
-};
-
-// Розширення інтерфейсів
-interface Employee extends User {
-  department: string;
-  salary: number;
-}
-
-// Індексна сигнатура
-interface Dictionary {
-  [key: string]: string;
-}
-
-// Type aliases
-type Point = { x: number; y: number };
-type ID = string | number;
-type UserOrAdmin = User | { role: "admin" };
-
-// Функціональні типи
-interface Calculator {
-  (a: number, b: number): number;
-}
-
-const add: Calculator = (x, y) => x + y;
-
-// Intersection з interfaces
-interface Serializable {
-  serialize(): string;
-}
-
-interface Timestamped {
-  timestamp: Date;
-}
-
-type SerializableUser = User & Serializable & Timestamped;
-
-// Generic interfaces
-interface Container<T> {
-  value: T;
-  getValue(): T;
-}`
+        "Інтерфейси": "Інтерфейси описують структуру об'єктів. Вони визначають, які властивості повинен мати об'єкт, їх типи та чи є вони обов'язковими. Інтерфейси існують тільки на етапі компіляції та не генерують жодного JavaScript коду.",
+        "Опціональні властивості": "Опціональні властивості позначаються знаком питання після назви властивості. Це означає, що властивість може бути присутньою або відсутньою в об'єкті. Корисно для конфігурацій та API параметрів.",
+        "Readonly властивості": "Readonly властивості не можна змінювати після створення об'єкта. Позначаються ключовим словом readonly. Забезпечують незмінність даних та запобігають випадковим модифікаціям.",
+        "Розширення інтерфейсів": "Інтерфейси можуть розширювати (наслідувати від) інші інтерфейси за допомогою ключового слова extends. Це дозволяє створювати ієрархії типів та перевикористовувати код.",
+        "Індексні сигнатури": "Дозволяють описувати об'єкти з динамічними ключами, коли заздалегідь невідомо, які властивості будуть присутні. Корисно для словників, карт та динамічних об'єктів.",
+        "Декларація злиття": "TypeScript може автоматично об'єднувати кілька декларацій одного інтерфейсу в один. Це корисно для розширення існуючих бібліотек та модульної архітектури."
+      }
     },
     {
       id: 6,
-      title: "Generics (Узагальнені типи)",
-      difficulty: "Intermediate",
-      duration: "55 min",
+      title: "Типи (Type Aliases)",
+      difficulty: "Середній",
+      duration: "45 хв",
       completed: false,
-      description: "Створення переописуваних компонентів за допомогою узагальнених типів.",
+      description: "Вивчіть створення власних типів та їх відмінності від інтерфейсів.",
       learningPoints: [
-        "Основи generics та параметри типів",
-        "Generic функції та класи",
-        "Обмеження типів (constraints)",
-        "Утилітні типи з generics"
+        "Створення псевдонімів типів",
+        "Відмінності між type та interface",
+        "Умовні типи",
+        "Mapped types",
+        "Template literal types"
       ],
       theory: {
-        "Generics": "Generics дозволяють створювати компоненти, які працюють з різними типами, зберігаючи інформацію про тип. Це робить код більш переперевикористовуваним та типобезпечним.",
-        "Основні концепції": `• Параметри типу (зазвичай позначаються як T, U, V)
-• Обмеження типів (constraints)
-• Узагальнені функції, класи та інтерфейси
-• Умовні типи`,
-        "Type constraints": "Дозволяють обмежити, які типи можуть бути передані як generic параметри. Використовується ключове слово extends.",
-        "Conditional types": "Типи, які змінюються в залежності від умови. Використовують синтаксис подібний до тернарного оператора."
-      },
-      codeExample: `// Базові generics
-function identity<T>(arg: T): T {
-  return arg;
-}
-
-let result1 = identity<string>("hello");
-let result2 = identity(42); // автоматичне виведення типу
-
-// Generic інтерфейси
-interface Response<T> {
-  data: T;
-  status: number;
-}
-
-interface User {
-  name: string;
-  email: string;
-}
-
-let userResponse: Response<User> = {
-  data: { name: "John", email: "john@example.com" },
-  status: 200
-};
-
-// Generic класи
-class Storage<T> {
-  private items: T[] = [];
-  
-  add(item: T): void {
-    this.items.push(item);
-  }
-  
-  get(index: number): T {
-    return this.items[index];
-  }
-}
-
-const stringStorage = new Storage<string>();
-stringStorage.add("hello");
-
-// Constraints (обмеження)
-interface HasLength {
-  length: number;
-}
-
-function logLength<T extends HasLength>(arg: T): T {
-  console.log(arg.length);
-  return arg;
-}
-
-// Keyof operator
-function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
-  return obj[key];
-}
-
-const person = { name: "John", age: 30 };
-const name = getProperty(person, "name"); // string
-const age = getProperty(person, "age");   // number
-
-// Conditional types
-type IsArray<T> = T extends any[] ? true : false;
-type Test1 = IsArray<string[]>; // true
-type Test2 = IsArray<string>;   // false`
+        "Псевдоніми типів": "Типи схожі на інтерфейси, але мають більше можливостей. Вони можуть описувати не тільки структуру об'єктів, але й об'єднання типів, примітивні типи, функції тощо. Створюються за допомогою ключового слова type.",
+        "Type vs Interface": "Interface можна розширювати та об'єднувати, краще для об'єктів. Type більш гнучкий, може описувати union types, computed properties, але не може бути розширений. Interface краще для публічних API, type - для складних трансформацій.",
+        "Умовні типи": "Conditional types дозволяють створювати типи, які залежать від умов. Використовують тернарний оператор для типів. Корисні для створення утилітних типів та складної логіки типізації.",
+        "Mapped types": "Дозволяють створювати нові типи шляхом трансформації існуючих. Перебирають ключі типу та застосовують до них трансформації. Основа для багатьох утилітних типів TypeScript.",
+        "Template literal types": "Дозволяють створювати типи на основі template literals. Корисні для створення строго типізованих рядків, CSS властивостей, API endpoints.",
+        "Recursive types": "TypeScript підтримує рекурсивні типи для опису структур даних як дерева, вкладені об'єкти тощо."
+      }
     },
     {
       id: 7,
-      title: "Класи в TypeScript",
-      difficulty: "Intermediate",
-      duration: "45 min",
+      title: "Generics (Узагальнені типи)",
+      difficulty: "Просунутий",
+      duration: "60 хв",
       completed: false,
-      description: "Розширені можливості класів з модифікаторами доступу та абстракцією.",
+      description: "Освойте потужну систему Generics для створення перевикористовуваних типів.",
       learningPoints: [
-        "Модифікатори доступу: public, private, protected",
-        "Абстрактні класи та методи",
-        "Статичні члени класів",
-        "Реалізація інтерфейсів в класах"
+        "Основи Generics",
+        "Параметри типу та обмеження",
+        "Узагальнені функції та класи",
+        "Умовні типи з Generics",
+        "Variance та covariance"
       ],
       theory: {
-        "Модифікатори доступу": `• Public - доступний всюди (за замовчуванням)
-• Private - доступний тільки в межах класу
-• Protected - доступний в класі та його нащадках
-• Readonly - властивість тільки для читання`,
-        "Абстрактні класи": "Класи, які не можна інстанціювати напряму. Вони слугують базою для інших класів та можуть містити абстрактні методи, які повинні бути реалізовані в дочірніх класах.",
-        "Статичні члени": "Властивості та методи, які належать класу, а не його екземплярам.",
-        "Реалізація інтерфейсів": "Класи можуть реалізовувати один або кілька інтерфейсів, гарантуючи наявність певних властивостей та методів."
-      },
-      codeExample: `// Базовий клас з модифікаторами
-class Animal {
-  public name: string;
-  private age: number;
-  protected species: string;
-  readonly id: number;
-  
-  constructor(name: string, age: number, species: string) {
-    this.name = name;
-    this.age = age;
-    this.species = species;
-    this.id = Math.random();
-  }
-  
-  protected makeSound(): void {
-    console.log("Some sound");
-  }
-}
-
-class Dog extends Animal {
-  constructor(name: string, age: number) {
-    super(name, age, "Canis lupus");
-  }
-  
-  bark(): void {
-    this.makeSound(); // доступний через protected
-    console.log("Woof!");
-  }
-}
-
-// Абстрактний клас
-abstract class Shape {
-  abstract getArea(): number;
-  
-  display(): void {
-    console.log(\`Area: \${this.getArea()}\`);
-  }
-}
-
-class Circle extends Shape {
-  constructor(private radius: number) {
-    super();
-  }
-  
-  getArea(): number {
-    return Math.PI * this.radius ** 2;
-  }
-}
-
-// Статичні члени
-class MathUtils {
-  static PI = 3.14159;
-  
-  static calculateCircleArea(radius: number): number {
-    return MathUtils.PI * radius ** 2;
-  }
-}
-
-// Реалізація інтерфейсів
-interface Flyable {
-  fly(): void;
-}
-
-interface Swimmable {
-  swim(): void;
-}
-
-class Duck implements Flyable, Swimmable {
-  fly(): void {
-    console.log("Flying...");
-  }
-  
-  swim(): void {
-    console.log("Swimming...");
-  }
-}`
+        "Generics": "Generics дозволяють створювати компоненти, які працюють з різними типами, зберігаючи інформацію про тип. Це робить код більш перевикористовуваним та типобезпечним. Замість жорсткого зазначення типу, використовуються параметри типу.",
+        "Параметри типу": "Параметри типу позначаються як T, U, V або більш описові назви. Це змінні типи, які заповнюються конкретними типами при використанні. Можуть мати значення за замовчуванням та обмеження.",
+        "Обмеження типів": "Constraints дозволяють обмежити, які типи можуть бути передані як параметри. Використовуючи extends ключове слово, можна вказати, що тип повинен розширювати певний інтерфейс або тип.",
+        "Узагальнені функції": "Функції можуть приймати параметри типу та використовувати їх для типізації параметрів та повернення. Це дозволяє створювати функції, які працюють з різними типами безпечно.",
+        "Узагальнені класи": "Класи можуть мати параметри типу, що дозволяє створювати типобезпечні контейнери, колекції та інші структури даних.",
+        "Умовні типи": "Поєднання Generics з умовними типами дозволяє створювати складну логіку типізації, яка залежить від конкретних типів.",
+        "Variance": "Розуміння коваріантності та контраваріантності важливе для правильного використання Generics у складних сценаріях."
+      }
     },
     {
       id: 8,
-      title: "Enums та константи",
-      difficulty: "Beginner",
-      duration: "30 min",
+      title: "Класи в TypeScript",
+      difficulty: "Середній",
+      duration: "55 хв",
       completed: false,
-      description: "Створення іменованих констант за допомогою енумів.",
+      description: "Дізнайтеся про розширені можливості класів TypeScript та модифікатори доступу.",
       learningPoints: [
-        "Числові енуми",
-        "Рядкові енуми",
-        "Const енуми для оптимізації",
-        "Зворотне відображення енумів"
+        "Модифікатори доступу (public, private, protected)",
+        "Readonly властивості",
+        "Статичні члени класу",
+        "Геттери та сеттери",
+        "Наслідування та поліморфізм"
       ],
       theory: {
-        "Енуми": "Енуми дозволяють створювати іменовані константи. Існують кілька видів енумів.",
-        "Числові енуми": "За замовчуванням значення починаються з 0 та автоматично збільшуються.",
-        "Рядкові енуми": "Кожне значення повинно бути явно ініціалізоване рядком.",
-        "Const енуми": "Повністю видаляються під час компіляції для кращої продуктивності. Значення вставляються безпосередньо в код."
-      },
-      codeExample: `// Числовий enum
-enum Direction {
-  Up,    // 0
-  Down,  // 1
-  Left,  // 2
-  Right  // 3
-}
-
-let dir: Direction = Direction.Up;
-
-// Рядковий enum
-enum Color {
-  Red = "red",
-  Green = "green",
-  Blue = "blue"
-}
-
-let color: Color = Color.Red;
-
-// Змішаний enum (не рекомендується)
-enum Mixed {
-  No = 0,
-  Yes = "yes"
-}
-
-// Const enum
-const enum Size {
-  Small = "small",
-  Medium = "medium",
-  Large = "large"
-}
-
-// Після компіляції Size.Small стане просто "small"
-let size = Size.Small;
-
-// Зворотне відображення (тільки для числових)
-enum Status {
-  Active = 1,
-  Inactive = 2
-}
-
-console.log(Status[1]); // "Active"
-console.log(Status.Active); // 1
-
-// Обчислювані значення
-enum FileAccess {
-  None,
-  Read = 1 << 1,
-  Write = 1 << 2,
-  ReadWrite = Read | Write
-}
-
-// Використання в типах
-function processStatus(status: Status): void {
-  if (status === Status.Active) {
-    console.log("Processing active");
-  }
-}`
+        "Класи в TypeScript": "TypeScript розширює можливості класів JavaScript, додаючи статичну типізацію та додаткові функції. Всі JavaScript класи є валідними TypeScript класами.",
+        "Модифікатори доступу": "public - доступний всюди (за замовчуванням). private - доступний тільки в межах класу. protected - доступний в класі та його нащадках. Ці модифікатори існують тільки на етапі компіляції.",
+        "Readonly властивості": "Readonly властивості можна встановити тільки в конструкторі або при оголошенні. Після ініціалізації їх не можна змінювати. Забезпечують незмінність даних.",
+        "Статичні члени": "Статичні члени - це властивості та методи, які належать класу, а не його екземплярам. Доступні через ім'я класу без створення екземпляра.",
+        "Геттери та сеттери": "Accessor properties дозволяють контролювати доступ до властивостей класу. Можна додати логіку валідації, логування або обчислення при отриманні/встановленні значення.",
+        "Наслідування": "TypeScript підтримує одиничне наслідування класів. Дочірні класи можуть перевизначати методи батьківського класу та додавати нову функціональність.",
+        "Абстракція": "TypeScript підтримує реалізацію інтерфейсів класами, що забезпечує дотримання контрактів."
+      }
     },
     {
       id: 9,
-      title: "Утилітні типи",
-      difficulty: "Advanced",
-      duration: "50 min",
+      title: "Абстрактні класи та поліморфізм",
+      difficulty: "Просунутий",
+      duration: "50 хв",
       completed: false,
-      description: "Використання вбудованих утилітних типів для трансформації існуючих типів.",
+      description: "Вивчіть абстрактні класи та принципи об'єктно-орієнтованого програмування.",
       learningPoints: [
-        "Partial, Required, Readonly",
-        "Pick, Omit, Record",
-        "Exclude, Extract, NonNullable",
-        "Створення власних утилітних типів"
+        "Абстрактні класи та методи",
+        "Відмінності від інтерфейсів",
+        "Поліморфізм у TypeScript",
+        "Композиція vs наслідування",
+        "Принципи SOLID"
       ],
       theory: {
-        "Утилітні типи": "TypeScript надає набір вбудованих утилітних типів для трансформації існуючих типів.",
-        "Основні утилітні типи": `• Partial<T> - робить всі властивості опціональними
-• Required<T> - робить всі властивості обов'язковими
-• Readonly<T> - робить всі властивості тільки для читання
-• Pick<T, K> - вибирає тільки вказані властивості
-• Omit<T, K> - виключає вказані властивості`,
-        "Додаткові типи": `• Record<K, T> - створює тип з ключами K та значеннями T
-• Exclude<T, U> - виключає типи U з T
-• Extract<T, U> - витягує типи U з T
-• NonNullable<T> - виключає null та undefined`
-      },
-      codeExample: `interface User {
-  id: number;
-  name: string;
-  email: string;
-  age: number;
-}
-
-// Partial - всі властивості опціональні
-type PartialUser = Partial<User>;
-let updateUser: PartialUser = { name: "John" };
-
-// Required - всі властивості обов'язкові
-type RequiredUser = Required<User>;
-
-// Readonly - всі властивості тільки для читання
-type ReadonlyUser = Readonly<User>;
-
-// Pick - вибрати конкретні властивості
-type UserPreview = Pick<User, "id" | "name">;
-let preview: UserPreview = { id: 1, name: "John" };
-
-// Omit - виключити властивості
-type CreateUser = Omit<User, "id">;
-let newUser: CreateUser = {
-  name: "Alice",
-  email: "alice@example.com",
-  age: 25
-};
-
-// Record - створити тип зі словника
-type Roles = "admin" | "user" | "guest";
-type Permissions = Record<Roles, string[]>;
-
-let perms: Permissions = {
-  admin: ["read", "write", "delete"],
-  user: ["read", "write"],
-  guest: ["read"]
-};
-
-// Exclude - виключити типи
-type NonNullString = Exclude<string | null | undefined, null | undefined>;
-
-// Extract - витягти типи
-type StringsOnly = Extract<string | number | boolean, string>;
-
-// NonNullable - виключити null та undefined
-type SafeValue = NonNullable<string | number | null | undefined>;
-
-// Власний утилітний тип
-type DeepPartial<T> = {
-  [P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P];
-};`
+        "Абстрактні класи": "Абстрактні класи - це класи, які не можна інстанціювати напряму. Вони слугують базою для інших класів та можуть містити абстрактні методи, які повинні бути реалізовані в дочірніх класах. Позначаються ключовим словом abstract.",
+        "Абстрактні методи": "Абстрактні методи оголошуються без реалізації в абстрактному класі. Всі дочірні класи повинні надати реалізацію цих методів. Це забезпечує контракт, який повинні дотримуватись нащадки.",
+        "Абстрактні класи vs Інтерфейси": "Абстрактні класи можуть містити реалізацію методів, конструктори та приватні члени. Інтерфейси описують тільки контракт. Клас може реалізовувати кілька інтерфейсів, але наслідувати тільки один абстрактний клас.",
+        "Поліморфізм": "Поліморфізм дозволяє об'єктам різних типів реагувати на однакові повідомлення по-різному. TypeScript підтримує поліморфізм через наслідування та реалізацію інтерфейсів.",
+        "Композиція": "Альтернатива наслідуванню, де об'єкт містить інші об'єкти та делегує їм частину своєї функціональності. Часто кращий вибір ніж наслідування для складних систем.",
+        "Принципи SOLID": "Набір принципів об'єктно-орієнтованого дизайну: Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion. TypeScript допомагає їх дотримуватись."
+      }
     },
     {
       id: 10,
-      title: "Розширені концепції типізації",
-      difficulty: "Advanced",
-      duration: "60 min",
+      title: "Енуми (Enumerations)",
+      difficulty: "Середній",
+      duration: "40 хв",
       completed: false,
-      description: "Просунуті техніки типізації: mapped types, conditional types, template literals.",
+      description: "Навчіться використовувати енуми для створення іменованих констант.",
       learningPoints: [
-        "Mapped Types для трансформації типів",
-        "Conditional Types та їх логіка",
-        "Template Literal Types",
-        "Index Signatures та Key Remapping"
+        "Числові енуми",
+        "Рядкові енуми",
+        "Гетерогенні енуми",
+        "Const енуми",
+        "Reverse mapping"
       ],
       theory: {
-        "Mapped Types": "Спосіб створення нових типів шляхом перебору властивостей існуючого типу. Це основа для утилітних типів TypeScript.",
-        "Conditional Types": "Типи, які змінюються в залежності від умови. Використовують синтаксис подібний до тернарного оператора. Дозволяють створювати складну логіку типізації.",
-        "Template Literal Types": "Типи, які використовують template literals для створення нових рядкових типів на основі існуючих. Це дозволяє створювати типи з динамічними рядками.",
-        "Index Signature": "Спосіб опису об'єктів з невідомими заздалегідь ключами, але відомими типами значень. Корисно для словників або мапи з динамічними ключами.",
-        "Key Remapping": "Техніка в mapped types, яка дозволяє змінювати назви ключів під час трансформації типу."
-      },
-      codeExample: `// Mapped Types
-type Optional<T> = {
-  [P in keyof T]?: T[P];
-};
-
-type User = { name: string; age: number; email: string };
-type OptionalUser = Optional<User>;
-
-// Conditional Types
-type IsString<T> = T extends string ? true : false;
-type Test1 = IsString<string>; // true
-type Test2 = IsString<number>; // false
-
-// Template Literal Types
-type EventName<T extends string> = \`on\${Capitalize<T>}\`;
-type ClickEvent = EventName<"click">; // "onClick"
-
-type APIEndpoint<T extends string> = \`/api/\${T}\`;
-type UserEndpoint = APIEndpoint<"users">; // "/api/users"
-
-// Більш складний приклад з conditional types
-type NonEmptyArray<T> = T extends readonly any[] 
-  ? T extends readonly [] 
-    ? never 
-    : T
-  : never;
-
-// Key Remapping в Mapped Types
-type Getters<T> = {
-  [K in keyof T as \`get\${Capitalize<string & K>}\`]: () => T[K];
-};
-
-type Person = { name: string; age: number };
-type PersonGetters = Getters<Person>;
-// { getName: () => string; getAge: () => number; }
-
-// Index Signatures
-interface StringDictionary {
-  [key: string]: string;
-}
-
-interface NumberDictionary {
-  [index: number]: string;
-}
-
-// Recursive types
-type Json = string | number | boolean | null | Json[] | { [key: string]: Json };
-
-// Infer keyword в conditional types
-type ReturnType<T> = T extends (...args: any[]) => infer R ? R : never;
-type FunctionReturn = ReturnType<() => string>; // string
-
-// Distributive conditional types
-type ToArray<T> = T extends any ? T[] : never;
-type StrOrNumArray = ToArray<string | number>; // string[] | number[]`
+        "Енуми": "Енуми дозволяють створювати іменовані константи. Це зручний спосіб організації пов'язаних значень під одним іменем. TypeScript підтримує кілька видів енумів.",
+        "Числові енуми": "За замовчуванням значення починаються з 0 та автоматично збільшуються. Можна явно встановити початкове значення або будь-яке конкретне значення. Підтримують зворотне відображення (reverse mapping).",
+        "Рядкові енуми": "Кожне значення повинно бути явно ініціалізоване рядком. Не підтримують автоінкремент, але більш читабельні та безпечні. Кожне значення має бути унікальним.",
+        "Гетерогенні енуми": "Змішують числові та рядкові значення в одному енумі. Не рекомендується використовувати, оскільки може призвести до плутанини та помилок.",
+        "Const енуми": "Енуми, позначені як const, повністю видаляються під час компіляції для кращої продуктивності. Значення замінюються інлайн константами.",
+        "Обчислювані значення": "Енуми можуть містити обчислювані значення, але всі наступні значення повинні бути явно ініціалізовані.",
+        "Використання": "Енуми корисні для статусів, режимів роботи, типів подій, опцій конфігурації та інших випадків, де потрібен обмежений набір значень."
+      }
     },
     {
       id: 11,
-      title: "Налаштування компілятора та tsconfig.json",
-      difficulty: "Intermediate",
-      duration: "40 min",
+      title: "Утилітні типи",
+      difficulty: "Просунутий",
+      duration: "55 хв",
       completed: false,
-      description: "Конфігурація TypeScript компілятора для оптимальної розробки.",
+      description: "Освойте вбудовані утилітні типи TypeScript для трансформації існуючих типів.",
       learningPoints: [
-        "Структура файлу tsconfig.json",
-        "Основні опції компіляції",
-        "Строгий режим та його опції",
-        "Налаштування шляхів та модулів"
+        "Часткові та обов'язкові типи (Partial, Required)",
+        "Селекція властивостей (Pick, Omit)",
+        "Трансформація типів (Record, Exclude, Extract)",
+        "Робота з null та undefined (NonNullable)",
+        "Створення власних утилітних типів"
       ],
       theory: {
-        "tsconfig.json": "Файл tsconfig.json містить всі налаштування компіляції: цільова версія JavaScript, система модулів, строгість перевірки типів, шляхи до файлів.",
-        "Процес компіляції": `TypeScript код проходить кілька етапів:
-1. Лексичний аналіз (tokenization)
-2. Синтаксичний аналіз (parsing)  
-3. Семантичний аналіз (type checking)
-4. Генерація JavaScript коду`,
-        "Строгий режим": `Набір опцій для суворішої перевірки:
-• noImplicitAny - заборона неявного any
-• strictNullChecks - строга перевірка null/undefined
-• strictFunctionTypes - строга перевірка типів функцій
-• noImplicitThis - заборона неявного this`,
-        "Модульна система": "TypeScript підтримує різні системи модулів: CommonJS, ES6, AMD, UMD. Вибір залежить від цільового середовища."
-      },
-      codeExample: `// tsconfig.json базова конфігурація
-{
-  "compilerOptions": {
-    "target": "ES2020",
-    "module": "commonjs",
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist"]
-}
-
-// Розширена конфігурація
-{
-  "compilerOptions": {
-    "target": "ES2020",
-    "lib": ["ES2020", "DOM"],
-    "module": "ESNext",
-    "moduleResolution": "node",
-    
-    // Строгість
-    "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "noImplicitThis": true,
-    
-    // Додаткові перевірки
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    
-    // Вихідні файли
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "declaration": true,
-    "sourceMap": true,
-    
-    // Шляхи
-    "baseUrl": "./",
-    "paths": {
-      "@/*": ["src/*"],
-      "@components/*": ["src/components/*"]
-    },
-    
-    // Інтероперабельність
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    
-    // Експериментальні функції
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
-  }
-}
-
-// Використання різних конфігурацій
-// package.json scripts
-{
-  "scripts": {
-    "build": "tsc",
-    "build:prod": "tsc --project tsconfig.prod.json",
-    "dev": "tsc --watch",
-    "type-check": "tsc --noEmit"
-  }
-}`
+        "Утилітні типи": "TypeScript надає набір вбудованих утилітних типів для трансформації існуючих типів. Вони дозволяють створювати нові типи на основі існуючих без дублювання коду.",
+        "Partial та Required": "Partial<T> - робить всі властивості типу T опціональними. Корисно для часткових оновлень об'єктів. Required<T> - робить всі властивості обов'язковими, навіть якщо вони були опціональними.",
+        "Readonly": "Readonly<T> - робить всі властивості тільки для читання. Забезпечує незмінність об'єктів на рівні типів.",
+        "Pick та Omit": "Pick<T, K> - вибирає тільки вказані властивості K з типу T. Omit<T, K> - виключає вказані властивості K з типу T. Корисні для створення підмножин типів.",
+        "Record": "Record<K, T> - створює тип з ключами K та значеннями T. Корисний для створення словників та карт з типізованими ключами та значеннями.",
+        "Exclude та Extract": "Exclude<T, U> - виключає типи U з об'єднання T. Extract<T, U> - витягує тільки ті типи з T, які є частиною U.",
+        "NonNullable": "NonNullable<T> - виключає null та undefined з типу T. Корисний для гарантування того, що значення не є null або undefined.",
+        "Власні утилітні типи": "Можна створювати власні утилітні типи, комбінуючи вбудовані типи та використовуючи advanced type features."
+      }
     },
     {
       id: 12,
-      title: "TypeScript у реальних проектах",
-      difficulty: "Advanced",
-      duration: "55 min",
+      title: "Декоратори та метапрограмування",
+      difficulty: "Просунутий",
+      duration: "50 хв",
       completed: false,
-      description: "Практичне застосування TypeScript в React, Node.js та інших технологіях.",
+      description: "Дізнайтеся про декоратори як спосіб метапрограмування в TypeScript.",
       learningPoints: [
-        "TypeScript з React та JSX",
-        "Типізація API відповідей",
-        "Декоратори та метапрограмування",
-        "Міграція з JavaScript на TypeScript"
+        "Основи декораторів",
+        "Декоратори класів та методів",
+        "Декоратори властивостей та параметрів",
+        "Metadata API",
+        "Практичні приклади використання"
       ],
       theory: {
-        "TypeScript + React": "Повна підтримка JSX з типізацією props, state та обробників подій. Покращує DX та зменшує кількість помилок.",
-        "API типізація": "Створення типів для серверних відповідей, request/response об'єктів та інтеграції з REST API.",
-        "Декоратори": "Експериментальна функція, яка дозволяє додавати метадані та змінювати поведінку класів, методів, властивостей та параметрів.",
-        "Міграція": "Поступова міграція JavaScript проектів на TypeScript через allowJs опцію та поступове додавання типів."
-      },
-      codeExample: `// React з TypeScript
-interface Props {
-  name: string;
-  age?: number;
-  onClick: (id: number) => void;
-}
-
-const UserCard: React.FC<Props> = ({ name, age, onClick }) => {
-  return (
-    <div onClick={() => onClick(1)}>
-      <h2>{name}</h2>
-      {age && <p>Age: {age}</p>}
-    </div>
-  );
-};
-
-// API типізація
-interface User {
-  id: number;
-  name: string;
-  email: string;
-}
-
-interface ApiResponse<T> {
-  data: T;
-  status: number;
-  message: string;
-}
-
-async function fetchUser(id: number): Promise<User> {
-  const response = await fetch(\`/api/users/\${id}\`);
-  const result: ApiResponse<User> = await response.json();
-  return result.data;
-}
-
-// Promise типізація
-type LoadingState<T> = {
-  loading: true;
-  data?: undefined;
-  error?: undefined;
-} | {
-  loading: false;
-  data: T;
-  error?: undefined;
-} | {
-  loading: false;
-  data?: undefined;
-  error: string;
-};
-
-// Декоратори (експериментальні)
-function log(target: any, propertyName: string, descriptor: PropertyDescriptor) {
-  const method = descriptor.value;
-  descriptor.value = function (...args: any[]) {
-    console.log(\`Calling \${propertyName} with\`, args);
-    return method.apply(this, args);
-  };
-}
-
-class Calculator {
-  @log
-  add(a: number, b: number): number {
-    return a + b;
-  }
-}
-
-// Namespace для організації коду
-namespace Utils {
-  export function formatDate(date: Date): string {
-    return date.toISOString().split('T')[0];
-  }
-  
-  export namespace Validators {
-    export function isEmail(email: string): boolean {
-      return email.includes('@');
-    }
-  }
-}
-
-// Використання: Utils.formatDate(new Date())
-
-// Модульна декларація для сторонніх бібліотек
-declare module 'third-party-lib' {
-  export function doSomething(param: string): number;
-}`
+        "Декоратори": "Декоратори - експериментальна функція, яка дозволяє додавати метадані та змінювати поведінку класів, методів, властивостей та параметрів. Вони надають декларативний спосіб модифікації коду.",
+        "Типи декораторів": "Декоратори класів - застосовуються до всього класу. Декоратори методів - модифікують поведінку методів. Декоратори властивостей - додають метадані до властивостей. Декоратори параметрів - працюють з параметрами методів.",
+        "Фабрики декораторів": "Функції, які повертають декоратори. Дозволяють створювати конфігуровані декоратори з параметрами. Корисні для створення гнучких та перевикористовуваних декораторів.",
+        "Metadata API": "TypeScript підтримує Reflect Metadata API для роботи з метаданими. Дозволяє зберігати та отримувати довільні метадані про типи, методи та властивості.",
+        "Використання в фреймворках": "Декоратори широко використовуються в Angular (для компонентів, сервісів), NestJS (для контролерів, middleware), TypeORM (для ентіті), та інших фреймворках.",
+        "Експериментальний статус": "Декоратори все ще експериментальна функція. Потрібно увімкнути experimentalDecorators в tsconfig.json. Синтаксис може змінитись у майбутніх версіях.",
+        "Альтернативи": "Можна досягти схожої функціональності використовуючи функції вищого порядку, композицію та інші патерни без декораторів."
+      }
+    },
+    {
+      id: 13,
+      title: "Модулі та простори імен",
+      difficulty: "Середній",
+      duration: "45 хв",
+      completed: false,
+      description: "Навчіться організовувати код за допомогою модулів та просторів імен.",
+      learningPoints: [
+        "ES6 модулі в TypeScript",
+        "Експорт та імпорт",
+        "Namespaces (простори імен)",
+        "Модульні системи (CommonJS, AMD, UMD)",
+        "Декларації модулів"
+      ],
+      theory: {
+        "Модулі в TypeScript": "TypeScript повністю підтримує ES6 модулі. Будь-який файл з експортом або імпортом вважається модулем. Модулі мають власну область видимості.",
+        "Експорт та імпорт": "Named exports - експорт конкретних значень з іменами. Default exports - експорт одного головного значення. Re-exports - реекспорт з інших модулів. TypeScript підтримує всі види ES6 імпорту/експорту.",
+        "Namespaces": "Простори імен - це спосіб організації коду в TypeScript. Вони створюють логічні групи пов'язаної функціональності. Менш використовуються в сучасному TypeScript на користь модулів.",
+        "Модульні системи": "TypeScript може компілюватись в різні модульні системи: CommonJS (Node.js), AMD (RequireJS), UMD (універсальні), ES6 modules. Вибір залежить від цільової платформи.",
+        "Декларації модулів": "Ambient modules дозволяють описувати зовнішні модулі, які не написані на TypeScript. Module augmentation дозволяє розширювати існуючі модулі.",
+        "Розв'язання модулів": "TypeScript має складну систему розв'язання модулів. Підтримує різні стратегії: node, classic. Можна налаштувати через baseUrl, paths, та інші опції.",
+        "Triple-slash директиви": "Спеціальні коментарі для надання інструкцій компілятору про залежності файлів та типів."
+      }
+    },
+    {
+      id: 14,
+      title: "TypeScript з React",
+      difficulty: "Просунутий",
+      duration: "60 хв",
+      completed: false,
+      description: "Дізнайтеся, як використовувати TypeScript в React проектах.",
+      learningPoints: [
+        "Типізація React компонентів",
+        "Props та State типи",
+        "Хуки в TypeScript",
+        "Event handling та refs",
+        "Higher-Order Components та Render Props"
+      ],
+      theory: {
+        "React з TypeScript": "TypeScript значно покращує розробку React додатків, надаючи типобезпеку для компонентів, пропсів та стану. Допомагає виявляти помилки на етапі розробки.",
+        "Типізація компонентів": "Функціональні компоненти типізуються як React.FC або просто як функції, що повертають JSX.Element. Класові компоненти розширюють React.Component з типізованими props та state.",
+        "Props типи": "Props типізуються через інтерфейси або типи. Можна використовувати опціональні властивості, значення за замовчуванням та складні типи. Children мають спеціальний тип React.ReactNode.",
+        "Хуки в TypeScript": "useState, useEffect та інші хуки можуть бути типізованими. TypeScript часто може вивести типи автоматично, але іноді потрібно явно вказувати типи, особливо для початкових значень.",
+        "Обробка подій": "React події мають специфічні типи: MouseEvent, ChangeEvent, FormEvent тощо. TypeScript забезпечує типобезпеку для event handlers.",
+        "Refs та DOM": "useRef хук типізується залежно від того, що зберігається. Для DOM елементів використовуються специфічні типи як HTMLInputElement, HTMLDivElement.",
+        "Просунуті патерни": "HOC, Render Props, Context API мають специфічні патерни типізації в TypeScript. Generics часто використовуються для створення перевикористовуваних компонентів."
+      }
+    },
+    {
+      id: 15,
+      title: "Налаштування та найкращі практики",
+      difficulty: "Просунутий",
+      duration: "55 хв",
+      completed: false,
+      description: "Освойте налаштування TypeScript проектів та найкращі практики розробки.",
+      learningPoints: [
+        "Конфігурація tsconfig.json",
+        "Найкращі практики типізації",
+        "Лінтінг та форматування",
+        "Налагодження TypeScript",
+        "Продуктивність та оптимізація"
+      ],
+      theory: {
+        "Конфігурація проекту": "tsconfig.json є центральним файлом конфігурації TypeScript проекту. Визначає опції компіляції, включені файли, target ES версію та багато інших налаштувань.",
+        "Ключові опції": "target - версія ECMAScript для виводу. module - модульна система. strict - увімкнення всіх строгих перевірок. lib - бібліотеки, які включити. outDir - папка для скомпільованих файлів.",
+        "Найкращі практики": "Використовуйте strict mode. Уникайте any, використовуйте unknown. Надавайте перевагу type guards над type assertions. Використовуйте readonly для незмінних даних. Створюйте маленькі, сфокусовані типи.",
+        "Лінтінг": "ESLint з @typescript-eslint/parser надає правила специфічні для TypeScript. Prettier для форматування коду. Налаштування едіторів для автоматичного форматування та виправлення.",
+        "Налагодження": "Source maps для налагодження в браузері. TypeScript підтримка в IDE. Використання breakpoints в TypeScript коді. Аналіз типів та помилок компіляції.",
+        "Продуктивність": "Incremental compilation для швидших збірок. Project references для великих проектів. Lazy типізація для покращення часу завантаження IDE. Оптимізація імпортів.",
+        "Міграція з JavaScript": "Поступова міграція - додавання файлів .ts по одному. Використання @ts-check для перевірки JS файлів. Створення .d.ts файлів для типізації існуючого коду.",
+        "Інструменти екосистеми": "ts-node для виконання TypeScript безпосередньо. webpack/rollup налаштування. Jest конфігурація для тестування TypeScript."
+      }
     }
   ]
 };
