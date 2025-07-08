@@ -11,12 +11,12 @@ import {
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import WebAssetIcon from "@mui/icons-material/WebAsset";
 import TopicCard from "../components/TopicCard";
-import { tsCourseData } from "../data/tsCourse.js"; 
+import { typescriptCourseData } from "../data/tsCourse.js"; 
 
 export default function HTMLCoursePage({ onBack }) {
   const theme = useTheme();
-  const completedTopics = tsCourseData.topics.filter(topic => topic.completed).length;
-  const totalTopics = tsCourseData.topics.length;
+  const completedTopics = typescriptCourseData.topics.filter(topic => topic.completed).length;
+  const totalTopics = typescriptCourseData.topics.length;
   const progress = (completedTopics / totalTopics) * 100;
 
   return (
@@ -55,11 +55,11 @@ export default function HTMLCoursePage({ onBack }) {
           </Box>
           <Box>
             <Typography variant="h4" fontWeight="bold">
-              {tsCourseData.title}
+              {typescriptCourseData.title}
             </Typography>
             <Box sx={{ display: "flex", alignItems: "center", gap: 1, mt: 1 }}>
               <Chip
-                label={tsCourseData.level}
+                label={typescriptCourseData.level}
                 size="small"
                 sx={{
                   bgcolor: theme.palette.mode === "dark" ? "#242424" : "#e0e0e0",
@@ -74,7 +74,7 @@ export default function HTMLCoursePage({ onBack }) {
         </Box>
         
         <Typography variant="body1" sx={{ color: "text.secondary", mb: 3 }}>
-          {tsCourseData.description}
+          {typescriptCourseData.description}
         </Typography>
         
         {/* Progress */}
@@ -108,7 +108,7 @@ export default function HTMLCoursePage({ onBack }) {
           Course Topics
         </Typography>
         
-        {tsCourseData.topics.map((topic) => (
+        {typescriptCourseData.topics.map((topic) => (
           <TopicCard key={topic.id} topic={topic} />
         ))}
       </Box>
