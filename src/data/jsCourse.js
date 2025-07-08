@@ -1,1371 +1,786 @@
 export const jsCourseData = {
-  title: "JavaScript Fundamentals",
-  description: "Вивчіть JavaScript від основ до просунутих концепцій. Цей комплексний курс охоплює все необхідне для становлення впевненим JavaScript розробником.",
-  level: "Beginner to Advanced",
-  duration: "~12 hours",
-  prerequisites: "Базові знання HTML",
-  certificate: "Доступний після завершення",
+  title: "Основи JavaScript",
+  description: "Повний курс JavaScript від основ до просунутих концепцій. Навчіться програмувати на JavaScript з нуля до професійного рівня.",
+  level: "Від початківця до експерта",
+  duration: "~20 годин",
+  prerequisites: "Базові знання HTML та CSS",
+  certificate: "Доступний після завершення всіх модулів",
   topics: [
     {
       id: 1,
-      title: "Типи даних та змінні",
-      difficulty: "Beginner",
-      duration: "35 min",
-      completed: true,
+      title: "Змінні та типи даних",
+      difficulty: "Початківець",
+      duration: "45 хв",
+      completed: false,
       description: "Основи JavaScript: типи даних, оголошення змінних та робота з різними значеннями.",
       learningPoints: [
         "8 типів даних в JavaScript",
-        "Різниця між null та undefined",
-        "Особливості NaN",
-        "Відмінності var, let та const"
+        "Примітивні vs складні типи даних",
+        "Відмінності var, let та const",
+        "Оператор typeof та перевірка типів"
       ],
       theory: {
+        "JavaScript": "JavaScript - це динамічно типізована мова програмування, де змінні можуть змінювати свій тип даних під час виконання програми.",
+        "Змінні": "Змінна - це «іменоване сховище» для даних. Ми можемо використовувати змінні для зберігання товарів, відвідувачів та інших даних.",
+        "var vs let vs const": `Var - можна ініціалізувати після оголошення, можна змінювати, має функціональну область видимості. Змінна підіймається на верх своєї області видимості, а значить до неї можна звернутися до її оголошення у такому випадку її значенням буде undefined. Зараз майже не використовують цю змінну.
+Let - змінну можна ініціалізувати після оголошення, можна змінювати, має блокову область видимості.
+Const - змінну обов'язково потрібно ініціалізувати під час оголошення, не можна змінювати, має блокову область видимості.`,
         "Типи даних": `Існує 8 типів даних. 7 примітивних та 1 складний тип даних.
 Примітивні типи: number, string, boolean, symbol, bigInt, null, undefined
-Складний тип: object, array, function
-Складний тип використовується для колекцій даних та для оголошення більш складних сутностей. Також він передається за посиланням, а прості типи даних за значенням.`,
-        "NaN": "NaN (Not a Number) - це значення, що отримується в результаті виконання числової операції над не числовим значення.",
-        "null vs undefined": `Undefined являє собою значення за замовчуванням:
-- Змінної, яку оголосили без ініціалізації
-- Функції, яка нічого не повертає явно
-- Неіснуючої властивості об'єкта
-Null - це значення «відсутності значення». Присвоюється змінній явно.`,
-        "var vs let vs const": `Var - можна ініціалізувати після оголошення, можна змінювати, має функціональну область видимості. Змінна підіймається на верх своєї області видимості.
-Let - змінну можна ініціалізувати після оголошення, можна змінювати, має блокову область видимості
-Const - змінну обов'язково потрібно ініціалізувати під час оголошення, не можна змінювати, має блокову область видимості.`
-      },
-      codeExample: `// Примітивні типи
-let numberType = 42;
-let stringType = "Hello World";
-let booleanType = true;
-let undefinedType; // undefined
-let nullType = null;
-let symbolType = Symbol('id');
-let bigIntType = 123n;
-
-// Складний тип
-let objectType = { name: "John", age: 30 };
-let arrayType = [1, 2, 3];
-let functionType = function() { return "Hello"; };
-
-// Перевірка типів
-console.log(typeof numberType);   // "number"
-console.log(typeof stringType);   // "string"
-console.log(typeof nullType);     // "object" (історична помилка JS)
-
-// NaN приклади
-console.log("text" * 2);     // NaN
-console.log(parseInt("abc")); // NaN
-console.log(NaN === NaN);    // false (особливість NaN)
-console.log(Number.isNaN(NaN)); // true
-
-// Змінні
-var oldVar = "function scope";
-let newLet = "block scope";
-const CONSTANT = "cannot change";
-
-// Області видимості
-if (true) {
-    var varInBlock = "доступна ззовні";
-    let letInBlock = "доступна тільки в блоці";
-    const constInBlock = "доступна тільки в блоці";
-}
-console.log(varInBlock); // "доступна ззовні"
-// console.log(letInBlock); // ReferenceError`
+Складний тип: object, array, function 
+Він використовується для колекцій даних та для оголошення більш складних сутностей. Також він передається за посиланням, а прості типи даних за значенням.`,
+        "Number": "Number - тип даних, що використовується для представлення числових значень, як цілих, так дійсних.",
+        "BigInt": "BigInt - тип, щоб працювати з цілими числами довільної довжини.",
+        "String": "String - тип для представлення текстової інформації.",
+        "Boolean": "Boolean - існує 2 можливих значення: true і false.",
+        "Null": "Null - відсутність значення. Використовується для присвоєння змінної порожнього або невідомого значення.",
+        "Undefined": "Undefined - вказує на змінну, яка була оголошена, але не має значення. Використовується для перевірок, чи була змінна призначена.",
+        "Symbol": "Symbol - цей тип використовується для створення унікальних ідентифікаторів в об'єктах.",
+        "Object": "Object - це самостійна одиниця, що має властивості та методи. У об'єктах зберігаються колекції даних чи складні структури.",
+        "Відмінності між примітивами та посиланнями": `Примітиви надаються за значенням, тобто копіюються, коли створюється нова змінна.
+Посилання (об'єкти) передаються за посиланням, тобто вказують на один і той самий об'єкт в JavaScript.`,
+        "Копіювання об'єкта": `1. Spread operator(…) - дозволяє копіювати властивості з одного об'єкта в інший.
+2. Object.assign() - дозволяє копіювати властивості з одного або більше об'єктів до цільового об'єкта
+3. JSON.stringify() - використовуємо для перетворення об'єкта в рядок JSON, а потім JSON.parse() - використовуємо для створення об'єкта з цього рядка.`,
+        "Оператор typeof": "Оператор typeof - це оператор, який дозволяє визначити тип даних змінної або виразу в JavaScript."
+      }
     },
     {
       id: 2,
       title: "Оператори та порівняння",
-      difficulty: "Beginner",
-      duration: "25 min",
+      difficulty: "Початківець",
+      duration: "35 хв",
       completed: false,
       description: "Дізнайтеся про різні типи операторів в JavaScript та особливості порівняння значень.",
       learningPoints: [
-        "Строга vs нестрога рівність",
-        "Логічні оператори: НІ, АБО, І",
         "Арифметичні та присвоювальні оператори",
-        "Оператор typeof та instanceof"
+        "Логічні оператори: І, АБО, НІ",
+        "Оператори порівняння",
+        "Тернарний оператор та switch"
       ],
       theory: {
-        "Строга vs нестрога рівність": `Строга рівність (===) - порівнює значення за типом даних та значенням.
-Нестрога рівність (==) - приводить значення до одного типу, а потім ці значення порівнює.`,
-        "Логічні оператори": `Логічне І (&&) - перевіряє до першого false. Повертає один true, якщо всі аргументи є true. Якщо один з аргументів false, повертає його.
-Логічне АБО (||) - перевіряє до першого true. Якщо всі аргументи є false, повертає останній false.
-Логічне НІ (!) - це унарний оператор, який інвертує логічне значення свого операнда.`,
-        "Короткі обчислення": "Логічні оператори && та || використовують короткі обчислення - вони зупиняють обчислення, як тільки результат стає очевидним."
-      },
-      codeExample: `// Строга vs нестрога рівність
-console.log(5 == "5");   // true (нестрога - приведення типів)
-console.log(5 === "5");  // false (строга - різні типи)
-console.log(null == undefined);  // true
-console.log(null === undefined); // false
-
-// Логічні оператори
-console.log(true && false);  // false
-console.log(true || false);  // true
-console.log(!true);          // false
-
-// Короткі обчислення
-let user = { name: "John" };
-console.log(user && user.name); // "John"
-console.log(user || "Guest");   // { name: "John" }
-
-let name = user.name || "Anonymous";
-let hasPermission = user.isAdmin && user.canEdit;
-
-// Nullish coalescing оператор (??)
-let value = null;
-console.log(value ?? "default"); // "default"
-console.log(0 ?? "default");     // 0 (0 не null/undefined)
-
-// Арифметичні оператори
-let a = 10;
-console.log(++a); // 11 (pre-increment)
-console.log(a++); // 11 (post-increment, a стає 12)
-console.log(a);   // 12
-
-// Тернарний оператор
-let age = 18;
-let status = age >= 18 ? "adult" : "minor";
-
-// typeof оператор
-console.log(typeof "hello");    // "string"
-console.log(typeof 42);         // "number"
-console.log(typeof true);       // "boolean"
-console.log(typeof undefined);  // "undefined"
-console.log(typeof null);       // "object" (помилка JS)
-console.log(typeof {});         // "object"
-console.log(typeof []);         // "object"
-console.log(typeof function(){}); // "function"`
+        "Унарні оператори": `Унарні оператори - це оператори, які працюють з одним операндом, тобто змінною чи значенням.
+Унарний плюс (+) - перетворює операнд в число.
+Унарний мінус (-) - змінює знак числа на протилежний.
+Унарний оператор заперечення (!) - інвертує значення логічного операнду`,
+        "Типи унарних операторів": `1. Передоператор - це унарний оператор, який змінює значення операнду перед тим як виконується дія.
+2. Постоператор - це унарний оператор, який зменшує значення операнду після того, як виконано дію.`,
+        "Оператори присвоювання": `Оператори присвоювання використовуються для присвоєння значення змінній. Найпростішим оператором присвоювання є =
+Інкремент та декремент - це оператори для збільшення або зменшення значення змінної на 1.
+Існують дві форми: префіксна (++х) та постфіксна (х++)`,
+        "Бінарні та арифметичні оператори": `Бінарні операції - це ті, що приймають 2 операнди та повертають 1 значення.
+Арифметичні операції - це підмножина бінарних операцій, що виконують математичні дії, такі як додавання, віднімання, множення, ділення.`,
+        "Логічні оператори": `&& (логічне «І» або «AND»)
+|| (логічне «АБО» або «OR»)
+! (Логічне заперечення)
+? (використовується для визначення значення за замовчуванням для змінної, яка може бути null або undefined)`,
+        "Тернарний оператор": `Тернарний оператор - приймає три операнди і виконує умову операції на підставі значення умови.
+умова ? вираз 1 : вираз 2
+Якщо умова істинна - виконується вираз 1, інакше - вираз 2.`,
+        "Конструкція switch": "Конструкція switch замінює собою відразу декілька if",
+        "Оператори порівняння": `Вони дозволяють визначити відносини між об'єктами та даними і відповідають на питання, чи вірне одне значення відносно іншого.
+Оператори < та >
+Оператори <= та >=
+Оператори in (використовується для перевірки чи містить об'єкт вказану властивість)`,
+        "Явне та неявне перетворення": `Явне перетворення типів даних - відбувається за допомогою різних функцій та методів, які дозволяють змінювати тип даних змінних на конкретний тип.
+Неявне перетворення типів даних - відбувається автоматично в певних випадках, коли JS намагається виконати операції над різними типами даних.`,
+        "Модальні вікна": `Alert - функція показує модальне вікно з повідомленням поки користувач не натисне ОК.
+Prompt - функція показує модальне вікно для вводу тексту користувачем.
+Confirm - функція показує модальне вікно з питанням та 2 кнопками: ОК та скасувати.`,
+        "Шаблонні рядки": "Шаблонні рядки - це потужний інструмент для створення та форматування рядків в JS",
+        "Округлення чисел": `Math.floor - округлює вниз 
+Math.ceil - округлює вгору
+Math.round - округлює до найближчого цілого
+Math.trunc - відкидає дрібну частинку`
+      }
     },
     {
       id: 3,
-      title: "Функції та області видимості",
-      difficulty: "Intermediate",
-      duration: "45 min",
+      title: "Цикли",
+      difficulty: "Початківець",
+      duration: "40 хв",
       completed: false,
-      description: "Глибоке розуміння функцій, hoisting, замикань та лексичного оточення.",
+      description: "Освойте різні типи циклів для багаторазового виконання коду.",
       learningPoints: [
-        "Function Declaration vs Function Expression",
-        "Hoisting та його особливості",
-        "Лексичне оточення та замикання",
-        "IIFE - негайно викликувані функції"
+        "Цикл while та do...while",
+        "Цикл for та його варіанти",
+        "for...in та for...of",
+        "break, continue та вкладені цикли"
       ],
       theory: {
-        "Function Declaration vs Expression": `Function Expression - це змінна у яку записали функцію і на неї не розповсюджується hoisting, а на Function Declaration - розповсюджується.
-Function Declaration можна використовувати у всьому скрипті, Function Expression створюється, коли виконання доходить до нього.`,
-        "Hoisting": `Це механізм у JavaScript, в якому змінні типу var та оголошення функцій, пересуваються вгору своєї області видимості перед тим, як код буде виконаний.`,
-        "Лексичне оточення": `Це властивості внутрішнього об'єкта функції, які створюються під час її виклику. Туди записуються аргументи, функції та змінні створені всередині цієї функції.`,
-        "Замикання": `Це здатність функції під час створення запам'ятовувати посилання на змінні, функції та параметри, що знаходяться в поточному лексичному оточенні. Замикання дозволяють повʼязувати дані з функцією, яка працює з цими даними.`,
-        "IIFE": `IIFE (Immediately Invoked Function Expression) - це функція, яка викликається одразу після створення. Використовується для виконання ініціалізації та створення приватної області видимості.`
-      },
-      codeExample: `// Function Declaration (hoisted)
-console.log(sayHello()); // "Hello!" - працює завдяки hoisting
-
-function sayHello() {
-    return "Hello!";
+        "Цикли": `Цикли - передбачені для багаторазового використовування однієї ділянки коду.
+Код виконується доти, доки умова істинна.
+Є 3 основні типи циклів: 
+1. For
+2. While
+3. Do…while`,
+        "While": `Доки умова є вірною, код із циклу виконується
+while (умова) {
+   тіло циклу
+}`,
+        "Do...while": "Якщо хочемо, щоб тіло циклу виконалося хоча б один раз, навіть якщо умова хибна.",
+        "For": `Це найпоширеніший вид циклу. Він дозволяє вказати початкову умову, умову виходу та крок ітерації.
+For (ініціалізація, умова, ітерація) {
+   тіло циклу
+}`,
+        "For...in": `Для ітерації по властивостях об'єкта
+const obj = {
+   a: 10,
+   b: 15,
+   c: 20
 }
 
-// Function Expression (not hoisted)
-// console.log(sayBye()); // ReferenceError
-const sayBye = function() {
-    return "Bye!";
-};
+for (const key in obj) {
+   console.log(key) // a b c
+}`,
+        "For...of": `Для ітерації по об'єктах
+const array = [1, 2, 3, 4, 5]
 
-// Arrow Function
-const add = (a, b) => a + b;
-const multiply = (a, b) => {
-    return a * b;
-};
-
-// Hoisting приклади
-console.log(myVar); // undefined (не помилка!)
-var myVar = 5;
-
-// let та const не hoisted у тому ж сенсі
-// console.log(myLet); // ReferenceError
-let myLet = 10;
-
-// Замикання
-function outerFunction(x) {
-    // Зовнішня змінна
-    
-    function innerFunction(y) {
-        return x + y; // Доступ до x з зовнішньої функції
-    }
-    
-    return innerFunction;
-}
-
-const addFive = outerFunction(5);
-console.log(addFive(3)); // 8
-
-// Практичний приклад замикання
-function createCounter() {
-    let count = 0;
-    
-    return {
-        increment: () => ++count,
-        decrement: () => --count,
-        getCount: () => count
-    };
-}
-
-const counter = createCounter();
-console.log(counter.increment()); // 1
-console.log(counter.increment()); // 2
-console.log(counter.getCount());  // 2
-
-// IIFE
-(function() {
-    console.log("IIFE виконалася!");
-    let privateVar = "Не доступна ззовні";
-})();
-
-// IIFE з параметрами
-(function(name) {
-    console.log("Hello, " + name);
-})("World");
-
-// Модульний патерн з IIFE
-const myModule = (function() {
-    let privateVariable = 0;
-    
-    return {
-        increment: function() {
-            privateVariable++;
-        },
-        getCount: function() {
-            return privateVariable;
-        }
-    };
-})();`
+for (const key of array) {
+   console.log(key) // 1 2 3 4 5
+}`,
+        "Break та Continue": `Break - ми можемо перервати цикл та вийти з нього 
+Continue - припиняє не весь цикл, а тільки поточну ітерацію`,
+        "Вкладені цикли": "Вкладені цикли - це цикли, які знаходяться всередині інших циклів.",
+        "Нескінченні цикли": "Нескінченні цикли - це цикли, які ніколи не завершуються при нормальних умовах."
+      }
     },
     {
       id: 4,
-      title: "Об'єкти та this",
-      difficulty: "Intermediate",
-      duration: "40 min",
+      title: "Функції",
+      difficulty: "Середній",
+      duration: "50 хв",
       completed: false,
-      description: "Розуміння об'єктів, контексту this та методів зміни контексту виклику.",
+      description: "Глибоке розуміння функцій, області видимості та різних способів створення функцій.",
       learningPoints: [
-        "Створення та копіювання об'єктів",
-        "Контекст this та його визначення",
-        "Методи call, apply, bind",
-        "Стрілкові функції та this"
+        "Function Declaration vs Function Expression",
+        "Область видимості функцій",
+        "Чисті та анонімні функції",
+        "Повернення значень з функцій"
       ],
       theory: {
-        "Порівняння об'єктів": `Результатом порівняння двох схожих об'єктів буде false, тому що об'єкти - це типи даних, що передаються за посиланням. 2 однакові на вигляд об'єкта мають різні посилання.`,
-        "Копіювання об'єктів": `Існує поняття глибокого та поверхневого копіювання.
-Поверхневе копіювання: spread оператор (...), Object.assign()
-Глибоке копіювання: JSON.stringify + JSON.parse, або функція deepClone`,
-        "this": `this - це посилання на контекст виклику функції. Контекстом є об'єкт, який в цей момент виконує або викликає функцію. Для стрілочної функції - це об'єкт у якому вона створена.`,
-        "call, apply, bind": `Call та apply викликають функцію із заданим контекстом. В call параметри передаються як перерахування, а в apply у вигляді масиву.
-Bind не викликає функцію, він повертає нову функцію із назавжди прив'язаним контекстом.`,
-        "Стрілкові функції": `Стрілочна функція не має власного this. Вона бере його за місцем створення. Стрілочна функція не має methods call, apply, bind і контекст змінити не можна.`
-      },
-      codeExample: `// Створення об'єктів
-const person = {
-    name: "John",
-    age: 30,
-    greet: function() {
-        return \`Hello, I'm \${this.name}\`;
-    }
-};
-
-// Поверхневе копіювання
-const shallowCopy1 = { ...person };
-const shallowCopy2 = Object.assign({}, person);
-
-// Глибоке копіювання (обмежений спосіб)
-const deepCopy = JSON.parse(JSON.stringify(person));
-
-// Власна функція глибокого копіювання
-function deepClone(obj) {
-    if (obj === null || typeof obj !== "object") return obj;
-    if (obj instanceof Date) return new Date(obj);
-    if (obj instanceof Array) return obj.map(item => deepClone(item));
-    
-    const cloned = {};
-    for (let key in obj) {
-        if (obj.hasOwnProperty(key)) {
-            cloned[key] = deepClone(obj[key]);
-        }
-    }
-    return cloned;
-}
-
-// this в різних контекстах
-const user = {
-    name: "Alice",
-    regularFunction: function() {
-        console.log(this.name); // "Alice"
-    },
-    arrowFunction: () => {
-        console.log(this.name); // undefined (this з глобального контексту)
-    },
-    nestedExample: function() {
-        const inner = () => {
-            console.log(this.name); // "Alice" (успадковує this від nestedExample)
-        };
-        inner();
-    }
-};
-
-// call, apply, bind
-function introduce(greeting, punctuation) {
-    return \`\${greeting}, I'm \${this.name}\${punctuation}\`;
-}
-
-const person1 = { name: "Bob" };
-const person2 = { name: "Charlie" };
-
-// call - параметри окремо
-console.log(introduce.call(person1, "Hi", "!")); // "Hi, I'm Bob!"
-
-// apply - параметри масивом
-console.log(introduce.apply(person2, ["Hello", "."])); // "Hello, I'm Charlie."
-
-// bind - створює нову функцію
-const boundIntroduce = introduce.bind(person1, "Hey");
-console.log(boundIntroduce("?")); // "Hey, I'm Bob?"
-
-// Практичний приклад з bind
-class Timer {
-    constructor() {
-        this.seconds = 0;
-    }
-    
-    start() {
-        // Без bind this був би window
-        setInterval(function() {
-            this.seconds++;
-            console.log(this.seconds);
-        }.bind(this), 1000);
-        
-        // Або з стрілковою функцією
-        // setInterval(() => {
-        //     this.seconds++;
-        //     console.log(this.seconds);
-        // }, 1000);
-    }
-}`
+        "Функції": "Функції - дозволяють організувати код, забезпечуючи його повторне використання та сприяють створенню більш структурованих програм.",
+        "Види оголошення функцій": "Є 2 види оголошення функцій: function declaration та function expression.",
+        "Область видимості": `Змінні, оголошені всередині функції, видно лише всередині функції.
+Проте, функція має доступ до зовнішніх змінних.`,
+        "Повернення функції": "Функції можуть повертатися за допомогою ключового слова return.",
+        "Ім'я функції": "Ім'я функції зазвичай є дієсловом та починається з маленької букви.",
+        "Чисті функції": "Чистою може бути функція, яка повертає однаковий результат, якщо викликається з тим самим набором аргументів.",
+        "Анонімні функції": `Це функції, які не мають імені або імені змінної і є одноразовими або невеликими.
+Приклади використання анонімних функцій: 
+1. Як функція колбек
+2. Анонімна функція, передана як аргумент
+3. Анонімна функція, яка викликається сама
+4. Замикання`,
+        "Стрілкові функції": `Стрілкові функції - це спрощена синтаксична форма визначення функцій.
+Стрілкові функції не мають свого контексту this, що робить їх зручними у використанні в ООП.`,
+        "Функції вищого порядку": "Це функції, які приймають інші функції як аргументи або повертають їх як результат."
+      }
     },
     {
       id: 5,
-      title: "Масиви та методи",
-      difficulty: "Beginner",
-      duration: "50 min",
+      title: "Замикання та функції вищого порядку",
+      difficulty: "Середній",
+      duration: "55 хв",
       completed: false,
-      description: "Освойте роботу з масивами та їх потужними методами для обробки даних.",
+      description: "Розуміння замикань, колбеків, IIFE та каррінгу функцій.",
       learningPoints: [
-        "Перевірка чи є змінна масивом",
-        "Перебираючі методи: forEach, map, filter, reduce",
-        "Методи пошуку: find, includes, indexOf",
-        "Об'єднання масивів та інші корисні методи"
+        "Замикання та їх практичне застосування",
+        "Callback функції",
+        "IIFE (негайно викликувані функції)",
+        "Каррінг та методи масивів"
       ],
       theory: {
-        "Перевірка масиву": `Для перевірки чи є змінна масивом можна використати метод Array.isArray()`,
-        "Перебираючі методи": `forEach - для перебору масиву, не повертає нічого
-filter - для фільтрації масиву, повертає новий масив
-every/some - для перевірки масиву, повертають булеві значення
-map - для трансформації масиву, повертає новий масив
-reduce - для обчислення значення з масиву
-sort - сортує масив, мутує оригінальний масив`,
-        "Об'єднання масивів": `Можна використовувати метод concat() або spread оператор для об'єднання масивів`,
-        "Пошук в масивах": `includes - повертає true/false
-indexOf - повертає індекс або -1
-find - повертає елемент або undefined`,
-        "for...in недоліки": `Цикл for...in можна використовувати для масивів, але не рекомендується:
-- перебирає всі властивості, включаючи прототип
-- порядок елементів не гарантований
-- менша продуктивність`
-      },
-      codeExample: `// Перевірка масиву
-console.log(Array.isArray([1, 2, 3])); // true
-console.log(Array.isArray("string"));  // false
-
-const numbers = [1, 2, 3, 4, 5];
-const words = ["apple", "banana", "cherry"];
-
-// forEach - перебір без повернення
-numbers.forEach((num, index) => {
-    console.log(\`Index \${index}: \${num}\`);
-});
-
-// map - трансформація
-const doubled = numbers.map(num => num * 2);
-console.log(doubled); // [2, 4, 6, 8, 10]
-
-// filter - фільтрація
-const evenNumbers = numbers.filter(num => num % 2 === 0);
-console.log(evenNumbers); // [2, 4]
-
-// find - знаходження першого елемента
-const found = numbers.find(num => num > 3);
-console.log(found); // 4
-
-// some - чи є хоча б один
-const hasEven = numbers.some(num => num % 2 === 0);
-console.log(hasEven); // true
-
-// every - чи всі відповідають умові
-const allPositive = numbers.every(num => num > 0);
-console.log(allPositive); // true
-
-// reduce - обчислення
-const sum = numbers.reduce((acc, num) => acc + num, 0);
-console.log(sum); // 15
-
-const max = numbers.reduce((max, num) => num > max ? num : max);
-console.log(max); // 5
-
-// Групування з reduce
-const people = [
-    { name: "John", age: 25 },
-    { name: "Jane", age: 30 },
-    { name: "Bob", age: 25 }
-];
-
-const groupedByAge = people.reduce((groups, person) => {
-    const age = person.age;
-    groups[age] = groups[age] || [];
-    groups[age].push(person);
-    return groups;
-}, {});
-
-// sort - сортування (мутує масив!)
-const fruits = ["banana", "apple", "cherry"];
-fruits.sort(); // Алфавітний порядок
-console.log(fruits); // ["apple", "banana", "cherry"]
-
-const nums = [10, 5, 40, 25, 1000, 1];
-nums.sort((a, b) => a - b); // Числове сортування
-console.log(nums); // [1, 5, 10, 25, 40, 1000]
-
-// Об'єднання масивів
-const arr1 = [1, 2];
-const arr2 = [3, 4];
-const combined1 = arr1.concat(arr2);
-const combined2 = [...arr1, ...arr2];
-
-// Пошук в масивах
-console.log(numbers.includes(3));    // true
-console.log(numbers.indexOf(3));     // 2
-console.log(numbers.indexOf(10));    // -1
-
-// Деструктуризація масивів
-const [first, second, ...rest] = numbers;
-console.log(first);  // 1
-console.log(second); // 2
-console.log(rest);   // [3, 4, 5]
-
-// Методи зміни масиву
-const mutableArray = [1, 2, 3];
-mutableArray.push(4);        // Додає в кінець
-mutableArray.unshift(0);     // Додає на початок
-mutableArray.pop();          // Видаляє з кінця
-mutableArray.shift();        // Видаляє з початку
-mutableArray.splice(1, 1, 99); // Видаляє/вставляє`
+        "Функція-колбек": "Функція-колбек - це функція, яка передається іншій функції як аргумент, яка потім викликається після завершення будь-якої дії.",
+        "Функція вищого порядку": "Називається функція, яка бере функцію як аргумент або повертає функцію у вигляді вихідного значення.",
+        "IIFE": "IIFE (Immediately Invoked Function Expression) - це JavaScript функція, яка виконується відразу після того, як вона була визначена.",
+        "Основні методи масивів": `Основні методи масивів, які використовують функції вищого порядку: 
+map() - цей метод створює новий масив, застосовуючи задану функцію до кожного елемента початкового масиву
+filter() - цей метод створює новий масив, включаючи тільки ті елементи, для яких задана функція повертає true (тобто сортує)
+reduce() - цей метод застосовує задану функцію до всіх елементів масиву та акумулює результати в одне значення
+forEach() - цей метод виконує задану функцію для кожного елемента масиву, але не створює новий масив.`,
+        "Функція що самовикликається": "IIFE (самовикликаюча функція) - це інструмент в JS, який дозволяє створювати функції та викликати їх безпосередньо після визначення.",
+        "Чисті функції детально": `Це функції, які мають певні властивості, спрощуючи розробку і розуміння коду.
+Основні характеристики: 
+1. Чиста функція завжди повертає однаковий результат для однакових вхідних даних 
+2. Чиста функція не змінює стану програми і не виконує операцій
+3. Результат виконання не залежить від порядку виклику функцій.`,
+        "Каррінг": `Каррінг - це техніка в функціональному програмуванні, яка полягає в трансформації функції з багатьма аргументами в послідовність функцій з одним аргументом кожна
+Не як name(a, b, c) а як name(a)(b)(c)`,
+        "Замикання": "Замикання - це функція, що має доступ до своєї зовнішньої функції в області видимості, навіть після того, як зовнішня функція припинилася."
+      }
     },
     {
       id: 6,
-      title: "Асинхронне програмування",
-      difficulty: "Advanced",
-      duration: "60 min",
+      title: "Стрілкові функції та контекст this",
+      difficulty: "Середній",
+      duration: "45 хв",
       completed: false,
-      description: "Опануйте асинхронний JavaScript: callback функції, Promise та async/await.",
+      description: "Розуміння стрілкових функцій, контексту this та методів зміни контексту.",
       learningPoints: [
-        "Callback функції та callback hell",
-        "Promise: створення та використання",
-        "async/await синтаксис",
-        "Обробка помилок в асинхронному коді"
+        "Стрілкові функції та їх особливості",
+        "Контекст this в різних ситуаціях",
+        "Методи call, apply, bind",
+        "Різниця між стрілковими та звичайними функціями"
       ],
       theory: {
-        "Callback функції": `callback функції - це функції, які передаються як аргументи в інші функції та викликаються після завершення певних операцій, зокрема асинхронних.`,
-        "Promise": `Promise - це об'єкт, який використовується для відкладених та асинхронних обчислень. Promise має 3 стани:
-- очікування (pending): початковий стан
-- виконано (fulfilled): операцію завершено успішно
-- відхилено (rejected): операцію завершено з помилкою`,
-        "async/await": `async робить створену функцію асинхронною. Функція async може містити вираз await, який призупиняє виконання функції та чекає відповіді від promise. Async функція завжди повертає promise.`,
-        "Обробка помилок": `Існує 2 способи обробки помилок в async/await:
-- try...catch в тілі функції
-- метод catch після виклику async функції`,
-        "Event Loop": `Це механізм, який відповідає за виконання коду, збору та обробки подій та виконання підзадач із черги`
-      },
-      codeExample: `// Callback функції
-function fetchData(callback) {
-    setTimeout(() => {
-        const data = { id: 1, name: "John" };
-        callback(null, data);
-    }, 1000);
-}
-
-fetchData((error, data) => {
-    if (error) {
-        console.error("Error:", error);
-    } else {
-        console.log("Data:", data);
-    }
-});
-
-// Callback Hell
-getData(function(a) {
-    getMoreData(a, function(b) {
-        getEvenMoreData(b, function(c) {
-            // Вкладеність стає нечитабельною
-        });
-    });
-});
-
-// Promise створення
-const myPromise = new Promise((resolve, reject) => {
-    const success = Math.random() > 0.5;
-    
-    setTimeout(() => {
-        if (success) {
-            resolve("Операція успішна!");
-        } else {
-            reject(new Error("Щось пішло не так!"));
-        }
-    }, 1000);
-});
-
-// Promise використання
-myPromise
-    .then(result => {
-        console.log(result);
-        return "Наступний крок";
-    })
-    .then(nextResult => {
-        console.log(nextResult);
-    })
-    .catch(error => {
-        console.error("Помилка:", error.message);
-    })
-    .finally(() => {
-        console.log("Завершено");
-    });
-
-// Promise.all - всі одночасно
-const promise1 = Promise.resolve(3);
-const promise2 = new Promise(resolve => setTimeout(() => resolve('foo'), 1000));
-const promise3 = Promise.resolve(42);
-
-Promise.all([promise1, promise2, promise3])
-    .then(values => {
-        console.log(values); // [3, "foo", 42]
-    });
-
-// Promise.race - перший що завершиться
-Promise.race([
-    new Promise(resolve => setTimeout(() => resolve('швидкий'), 100)),
-    new Promise(resolve => setTimeout(() => resolve('повільний'), 500))
-]).then(result => {
-    console.log(result); // "швидкий"
-});
-
-// async/await
-async function fetchUserData(userId) {
-    try {
-        const response = await fetch(\`/api/users/\${userId}\`);
-        const userData = await response.json();
-        
-        const posts = await fetch(\`/api/users/\${userId}/posts\`);
-        const userPosts = await posts.json();
-        
-        return {
-            user: userData,
-            posts: userPosts
-        };
-    } catch (error) {
-        console.error("Помилка отримання даних:", error);
-        throw error;
-    }
-}
-
-// Використання async функції
-async function main() {
-    try {
-        const data = await fetchUserData(123);
-        console.log("Отримані дані:", data);
-    } catch (error) {
-        console.error("Обробка помилки:", error);
-    }
-}
-
-// Альтернативна обробка помилок
-fetchUserData(123)
-    .then(data => console.log(data))
-    .catch(error => console.error(error));
-
-// Паралельне виконання з async/await
-async function fetchMultipleUsers() {
-    const [user1, user2, user3] = await Promise.all([
-        fetchUserData(1),
-        fetchUserData(2),
-        fetchUserData(3)
-    ]);
-    
-    return [user1, user2, user3];
-}
-
-// Послідовне vs паралельне виконання
-async function sequential() {
-    const result1 = await fetchData(1);  // Чекає 1 секунду
-    const result2 = await fetchData(2);  // Чекає ще 1 секунду
-    return [result1, result2];           // Загалом 2 секунди
-}
-
-async function parallel() {
-    const [result1, result2] = await Promise.all([
-        fetchData(1),  // Обидва запити виконуються одночасно
-        fetchData(2)   
-    ]);
-    return [result1, result2]; // Загалом 1 секунда
-}`
+        "Стрілкові функції детально": "Стрілкові функції - це інструмент JS, ідеальний для простих функцій, що використовуються для обробки подій, маніпулювання масивами, фільтрації даних та інших операцій.",
+        "Відмінності від звичайної функції": `Відмінності від звичайної функції:
+Відсутність this
+Неможливість використовувати arguments`,
+        "Контекст виклику в JavaScript": `Він визначає, як функції отримують доступ до об'єкту, в якому вони були викликані.
+1. Глобальний контекст виклику
+2. Контекст виклику функції
+3. Зміна виклику контексту змінити можна за допомогою методів: call(), apply(), bind()
+4. Контекст виклику при обробці подій`,
+        "Методи зміни контексту": `Метод bind() - створює нову функцію, яка при виклику встановлює як контекст виконаного this цього наданого значення 
+Метод call() та apply() - викликають функцію із зазначеним контекстом this та додатковими аргументами`,
+        "Конструктор об'єкту": `Функції-конструктори є стандартними функціями.
+1. Ім'я функції - конструктора має починатися з великої літери 
+2. Функція конструктор повинна викликатися за допомогою оператора «new».`
+      }
     },
     {
       id: 7,
-      title: "ООП в JavaScript",
-      difficulty: "Advanced",
-      duration: "55 min",
+      title: "Рекурсія та функції-конструктори",
+      difficulty: "Середній",
+      duration: "50 хв",
       completed: false,
-      description: "Об'єктно-орієнтоване програмування: прототипи, класи та принципи ООП.",
+      description: "Розуміння рекурсії та створення об'єктів за допомогою функцій-конструкторів.",
       learningPoints: [
-        "Принципи ООП: інкапсуляція, наслідування, поліморфізм",
-        "Прототипи та прототипне наслідування",
-        "ES6 класи vs функції-конструктори",
-        "Приватні властивості та методи"
+        "Принципи рекурсії",
+        "Функції-конструктори",
+        "Створення багаторазових об'єктів",
+        "Кастомні методи об'єктів"
       ],
       theory: {
-        "Принципи ООП": `Інкапсуляція - дозволяє приховати внутрішній стан об'єкта та expose лише необхідні методи.
-Наслідування - можливість створення нового класу на основі існуючого.
-Поліморфізм - здатність об'єктів різних класів реагувати на однакові методи по-різному.`,
-        "Прототип": `Це шаблон об'єкта. Він використовується як запасний варіант для властивостей та методів. JS шукає властивість спочатку в самому об'єкті, потім у прототипі.`,
-        "constructor vs class": `class - це синтаксичний цукор над функцією конструктора. У класі методи автоматично потрапляють у прототип, у функції конструктора їх потрібно додавати окремо.`
-      },
-      codeExample: `// Функція-конструктор (старий спосіб)
-function Person(name, age) {
-    this.name = name;
-    this.age = age;
-}
-
-// Додавання методу до прототипу
-Person.prototype.greet = function() {
-    return \`Hello, I'm \${this.name}\`;
-};
-
-Person.prototype.getAge = function() {
-    return this.age;
-};
-
-const person1 = new Person("John", 30);
-console.log(person1.greet()); // "Hello, I'm John"
-
-// ES6 Класи (новий спосіб)
-class PersonClass {
-    constructor(name, age) {
-        this.name = name;
-        this.age = age;
-    }
-    
-    greet() {
-        return \`Hello, I'm \${this.name}\`;
-    }
-    
-    getAge() {
-        return this.age;
-    }
-    
-    // Статичний метод
-    static species() {
-        return "Homo sapiens";
-    }
-}
-
-// Наслідування з класами
-class Student extends PersonClass {
-    constructor(name, age, university) {
-        super(name, age); // Виклик конструктора батьківського класу
-        this.university = university;
-    }
-    
-    study() {
-        return \`\${this.name} is studying at \${this.university}\`;
-    }
-    
-    // Перевизначення методу (поліморфізм)
-    greet() {
-        return \`Hi, I'm \${this.name}, a student at \${this.university}\`;
-    }
-}
-
-const student = new Student("Alice", 20, "MIT");
-console.log(student.greet());  // Перевизначений метод
-console.log(student.study());  // Власний метод
-console.log(student.getAge()); // Успадкований метод
-
-// Приватні поля (ES2022)
-class BankAccount {
-    #balance = 0;  // Приватне поле
-    #pin;          // Приватне поле
-    
-    constructor(initialBalance, pin) {
-        this.#balance = initialBalance;
-        this.#pin = pin;
-    }
-    
-    // Приватний метод
-    #validatePin(enteredPin) {
-        return this.#pin === enteredPin;
-    }
-    
-    getBalance(pin) {
-        if (this.#validatePin(pin)) {
-            return this.#balance;
-        }
-        throw new Error("Invalid PIN");
-    }
-    
-    withdraw(amount, pin) {
-        if (!this.#validatePin(pin)) {
-            throw new Error("Invalid PIN");
-        }
-        if (amount > this.#balance) {
-            throw new Error("Insufficient funds");
-        }
-        this.#balance -= amount;
-        return this.#balance;
-    }
-}
-
-const account = new BankAccount(1000, "1234");
-console.log(account.getBalance("1234")); // 1000
-// console.log(account.#balance); // SyntaxError: приватне поле
-
-// Прототипне наслідування (ручне)
-const animal = {
-    makeSound() {
-        return "Some sound";
-    },
-    
-    eat() {
-        return "Eating...";
-    }
-};
-
-const dog = Object.create(animal);
-dog.makeSound = function() {
-    return "Woof!";
-};
-
-console.log(dog.makeSound()); // "Woof!" (власний метод)
-console.log(dog.eat());       // "Eating..." (з прототипу)
-
-// Міксини (композиція замість наслідування)
-const CanFly = {
-    fly() {
-        return \`\${this.name} is flying\`;
-    }
-};
-
-const CanSwim = {
-    swim() {
-        return \`\${this.name} is swimming\`;
-    }
-};
-
-class Duck extends PersonClass {
-    constructor(name) {
-        super(name, 0);
-    }
-}
-
-// Додаємо міксини
-Object.assign(Duck.prototype, CanFly, CanSwim);
-
-const duck = new Duck("Donald");
-console.log(duck.fly());  // "Donald is flying"
-console.log(duck.swim()); // "Donald is swimming"`
+        "Рекурсія": `Рекурсія - це термін у програмуванні, що означає виклик функцією себе.
+У рекурсивних функціях завдання ділиться на більш прості підзавдання, і функція викликається для кожного з цих підзавдань до завершення всього завдання.`,
+        "Завдання для рекурсії": `Завдання, де рекурсія є найкращим вибором: 
+Пошук у глибину 
+Форматування дерева об'єктів
+Графічні інтерфейси`,
+        "Функція-конструктор": "Функція-конструктор - це спеціальна функція в JS, призначена для створення нових об'єктів певного типу.",
+        "Створення багаторазових об'єктів": "Можливість створення багаторазові об'єкти одного типу.",
+        "Інкапсуляція даних": "Можемо використовувати приватні властивості та методи для збереження даних та додаткової логіки в межах об'єкта.",
+        "Наслідування та прототипи": "Можуть бути використані для створення прототипів об'єктів, що дозволяє створювати ієрархію об'єктів та спадкувати їхню функціональність.",
+        "Варіативність та параметри": "Можемо передавати різну кількість аргументів при створенні об'єктів",
+        "Кастомні методи об'єкта": "Методи об'єкта - це функції, які відомі об'єкту та можуть викликатися для виконання певних операцій над об'єктом.",
+        "Відмінність методів об'єкта": "Методи об'єкта завжди пов'язані з об'єктом, на якому вони були викликані. Це означає, що метод може отримувати доступ до властивостей об'єкта через ключове слово this."
+      }
     },
     {
       id: 8,
-      title: "Веб APIs та сховище",
-      difficulty: "Intermediate",
-      duration: "40 min",
+      title: "Масиви та об'єкти",
+      difficulty: "Середній",
+      duration: "60 хв",
       completed: false,
-      description: "Робота з веб APIs, сховищем даних та обробкою подій.",
+      description: "Глибоке вивчення роботи з масивами, об'єктами та їх методами.",
       learningPoints: [
-        "LocalStorage та SessionStorage",
-        "Event Listeners та обробка подій",
-        "Fetch API для HTTP запитів",
-        "Деструктуризація об'єктів та масивів"
+        "Створення та робота з об'єктами",
+        "Методи об'єктів: Object.keys(), Object.values()",
+        "Деструктуризація об'єктів та масивів",
+        "Основні методи масивів"
       ],
       theory: {
-        "LocalStorage vs SessionStorage": `LocalStorage зберігає дані безстроково. Інформація залишиться навіть після закриття браузера.
-SessionStorage зберігає дані тільки під час поточної сесії вкладки. Дані втрачаються при закритті вкладки.`,
-        "addEventListener": `Обробник подій, який дозволяє додавати слухачів подій до HTML елементів. Може додавати кілька обробників для однієї події.`,
-        "Деструктуризація": `Деструктуризація - це спосіб розпакування значень з масивів або об'єктів у окремі змінні.`,
-        "CRUD операції": `CRUD - це абревіатура: Create, Read, Update, Delete. Ці операції є основою для роботи з даними в багатьох додатках.`
-      },
-      codeExample: `// LocalStorage та SessionStorage
-// Збереження даних
-localStorage.setItem('username', 'john_doe');
-sessionStorage.setItem('sessionId', '12345');
-
-// Отримання даних
-const username = localStorage.getItem('username');
-const sessionId = sessionStorage.getItem('sessionId');
-
-// Збереження об'єктів (потрібна серіалізація)
-const user = { name: 'John', age: 30, preferences: ['coding', 'reading'] };
-localStorage.setItem('user', JSON.stringify(user));
-
-// Отримання об'єктів
-const storedUser = JSON.parse(localStorage.getItem('user'));
-
-// Видалення даних
-localStorage.removeItem('username');
-localStorage.clear(); // Очистити все
-
-// Обробка подій з addEventListener
-const button = document.getElementById('myButton');
-
-// Додавання слухача події
-button.addEventListener('click', function(event) {
-    console.log('Button clicked!');
-    console.log('Event target:', event.target);
-    console.log('Event type:', event.type);
-});
-
-// Стрілкова функція як обробник
-button.addEventListener('click', (e) => {
-    e.preventDefault(); // Запобігти стандартній поведінці
-    console.log('Arrow function handler');
-});
-
-// Видалення слухача події
-function handleClick() {
-    console.log('Removable handler');
-}
-button.addEventListener('click', handleClick);
-button.removeEventListener('click', handleClick);
-
-// Event delegation
-document.getElementById('parent').addEventListener('click', function(e) {
-    if (e.target.classList.contains('child-button')) {
-        console.log('Child button clicked');
-    }
-});
-
-// Fetch API для HTTP запитів
-async function fetchData() {
-    try {
-        // GET запит
-        const response = await fetch('/api/users');
-        const users = await response.json();
-        
-        // POST запит
-        const newUser = {
-            name: 'Alice',
-            email: 'alice@example.com'
-        };
-        
-        const postResponse = await fetch('/api/users', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(newUser)
-        });
-        
-        if (!postResponse.ok) {
-            throw new Error(\`HTTP error! status: \${postResponse.status}\`);
-        }
-        
-        const createdUser = await postResponse.json();
-        return createdUser;
-        
-    } catch (error) {
-        console.error('Fetch error:', error);
-        throw error;
-    }
-}
-
-// CRUD операції з fetch
-class UserAPI {
-    static baseURL = '/api/users';
-    
-    // Create
-    static async create(userData) {
-        const response = await fetch(this.baseURL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(userData)
-        });
-        return response.json();
-    }
-    
-    // Read
-    static async getAll() {
-        const response = await fetch(this.baseURL);
-        return response.json();
-    }
-    
-    static async getById(id) {
-        const response = await fetch(\`\${this.baseURL}/\${id}\`);
-        return response.json();
-    }
-    
-    // Update
-    static async update(id, userData) {
-        const response = await fetch(\`\${this.baseURL}/\${id}\`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(userData)
-        });
-        return response.json();
-    }
-    
-    // Delete
-    static async delete(id) {
-        const response = await fetch(\`\${this.baseURL}/\${id}\`, {
-            method: 'DELETE'
-        });
-        return response.ok;
-    }
-}
-
-// Деструктуризація об'єктів
-const person = {
-    name: 'John',
-    age: 30,
-    address: {
-        city: 'Kyiv',
-        country: 'Ukraine'
-    },
-    hobbies: ['reading', 'coding']
-};
-
-// Базова деструктуризація
-const { name, age } = person;
-
-// Перейменування змінних
-const { name: fullName, age: years } = person;
-
-// Значення за замовчуванням
-const { occupation = 'Developer' } = person;
-
-// Вкладена деструктуризація
-const { address: { city, country } } = person;
-
-// Деструктуризація масивів
-const [firstHobby, secondHobby] = person.hobbies;
-
-// Rest оператор
-const { name: userName, ...restProps } = person;
-
-// Деструктуризація в параметрах функції
-function greetUser({ name, age, city = 'Unknown' }) {
-    return \`Hello \${name}, age \${age} from \${city}\`;
-}
-
-console.log(greetUser(person));
-
-// Практичний приклад з формою
-function handleFormSubmit(event) {
-    event.preventDefault();
-    
-    const formData = new FormData(event.target);
-    const { name, email, message } = Object.fromEntries(formData);
-    
-    // Обробка даних форми
-    console.log({ name, email, message });
-}`
+        "Об'єкт": `Об'єкт - це самостійна одиниця, що має властивості і методи.
+Властивості об'єкта по-суті є тими самими змінними в JS, за вийнятком, що вони закриті за об'єктом.
+Отримати доступ до властивості об'єкта можна так: ObjectName.value`,
+        "For..in": "Цикл проходить через властивості об'єкта, що перераховуються. Він пройде по кожному елементу окремо",
+        "Метод": "Метод - це функція, асоційована з об'єктом або це властивість об'єкта, що є функцією. Методи визначаються так само як звичайні функції.",
+        "Методи об'єктів": `Object.keys(), Object.values(), Object.entries() - дозволяють отримати масив ключів, масив значень та масив пар ключ-значення.
+Object.assign() - використовується для копіювання властивостей з одного та декількох об'єктів в цільовий об'єкт.
+hasOwnProperty() - використовується для перевірки наявності властивості в об'єкті. Повертає true, якщо властивість існує і false, якщо ні.`,
+        "Деструктуризація": "Деструктуризація - це спосіб отримання окремих властивостей об'єкта та присвоєння їх змінним.",
+        "Масиви": `Масиви - це впорядкована колекція значень. Значення в масиві називаються елементами, і кожен елемент характеризується числовою позицією в масиві, яка називається індексом.
+Масиви в мові JS є не типізованими: елементи масиву можуть мати будь-який тип, причому різні елементи одного і того ж масиву можуть мати різні типи.
+Не мають окремого типу, бо відносяться до об'єкта.
+Вони створюються за допомогою [] та заповнюються значеннями. Масиви можуть містити числа, рядки, об'єкти та навіть інші масиви.`,
+        "Базові операції з масивами": `Створення масиву
+Отримання доступу до елементу
+Зміна значення
+Отримання довжини масиву`,
+        "Способи створення масивів": `1. Літеральний спосіб створення масиву без використання конструктора Array
+2. З використанням конструктора Array  const numbers = new Array(«red», «yellow», «black»)
+3. Спрощений синтаксис створення масиву для створення масиву заданого розміру  const numbers = new Array(5)`,
+        "Додавання та видалення елементів": `Методи push, pop, unshift, shift - дозволяють додавати та видаляти елементи, а splice - надає більше контролю над редагуванням масиву.
+Додавання елементу в кінець масиву fruits.push(«grape»)
+Видалення останнього елементу fruits.pop(«grape»)
+Додавання елементу на початок масиву fruits.unshift(«grape»)
+Видалення першого елементу fruits.shift(«grape»)`,
+        "Основні методи масивів": "Методи, що дозволяють вирішувати різноманітні завдання з масивами: join, concat, slice, spice",
+        "Методи перебору масиву": `1. Цикл for  базовий метод перебору масивів. Використовуємо індекси для доступу до елементів масиву
+2. Цикл for…of цей цикл спрощує перебір масиву, оскільки ми вказуємо змінну для кожного елемента масиву.
+3. Метод forEach метод forEach є методом масиву, який приймає функцію зворотного виклику та застосовує її до кожного елемента масиву.
+4. Метод map метод map також приймає функцію зворотного виклику та створює новий масив, в якому кожен елемент є результатом функції.`,
+        "Збереження та копіювання масивів": `1. Просте присвоєння при присвоєнні масиву іншій змінній створюється посилання на оригінальний масив, тому зміни в одному вплинуть на інший
+2. Метод slice() створює новий масив, який містить підрядок оригінального масиву.
+3. Оператор розширення (…) створює новий масив і копіює значення з оригінального масиву`,
+        "Копіювання масиву": `1. Метод concat() створює новий масив, об'єднуючи два (або більше) масиви
+2. Метод Array.form() створює новий масив з інтегрованого об'єкта, такого як масив або строк
+3. Оператор розширення spread operator(…) використовується для створення глибоких копій об'єктів та масивів.`
+      }
     },
     {
       id: 9,
-      title: "Сучасний JavaScript",
-      difficulty: "Advanced",
-      duration: "45 min",
+      title: "Події та BOM",
+      difficulty: "Середній",
+      duration: "55 хв",
       completed: false,
-      description: "Останні можливості JavaScript: модулі, нові оператори та синтаксис.",
+      description: "Робота з подіями DOM, спливання подій та Browser Object Model.",
       learningPoints: [
-        "ES6+ модулі: import/export",
-        "Template literals та tagged templates",
-        "Нові оператори: nullish coalescing, optional chaining",
-        "use strict та його вплив на код"
+        "Фази подій: захоплення, цільова, спливання",
+        "Делегування подій",
+        "BOM: window, location, navigator, history",
+        "Робота з URL та screen об'єктом"
       ],
       theory: {
-        "use strict": `use strict - це директива, яка вмикає суворий режим у JavaScript. Вона забороняє використовувати небезпечні функції, робить код надійнішим і безпечнішим. У суворому режимі помилки видають виключення замість мовчазного ігнорування.`,
-        "ES Modules": "Модулі дозволяють організувати код у окремі файли та контролювати, що експортується та імпортується між ними.",
-        "Template Literals": "Шаблонні рядки дозволяють вбудовувати вирази та створювати багаторядкові рядки з більш зручним синтаксисом.",
-        "Сучасні оператори": "Optional chaining (?.) та nullish coalescing (??) спрощують роботу з потенційно undefined/null значеннями."
-      },
-      codeExample: `"use strict"; // Суворий режим
-
-// ES6 Модулі
-// math.js
-export const PI = 3.14159;
-export function add(a, b) {
-    return a + b;
-}
-export function multiply(a, b) {
-    return a * b;
-}
-export default function calculator(operation, a, b) {
-    switch(operation) {
-        case 'add': return add(a, b);
-        case 'multiply': return multiply(a, b);
-        default: throw new Error('Unknown operation');
-    }
-}
-
-// main.js
-import calculator, { PI, add } from './math.js';
-import * as mathUtils from './math.js';
-
-console.log(PI); // 3.14159
-console.log(add(2, 3)); // 5
-console.log(calculator('add', 5, 7)); // 12
-console.log(mathUtils.multiply(3, 4)); // 12
-
-// Динамічний імпорт
-async function loadMath() {
-    const { add, PI } = await import('./math.js');
-    console.log(add(1, 2));
-}
-
-// Template Literals
-const name = 'John';
-const age = 30;
-
-// Базове використання
-const greeting = \`Hello, my name is \${name} and I'm \${age} years old.\`;
-
-// Багаторядкові рядки
-const multiline = \`
-    This is a multiline
-    string that preserves
-    formatting.
-\`;
-
-// Вирази в template literals
-const mathResult = \`2 + 3 = \${2 + 3}\`;
-const conditional = \`You are \${age >= 18 ? 'adult' : 'minor'}\`;
-
-// Tagged Template Literals
-function highlight(strings, ...values) {
-    return strings.reduce((result, string, i) => {
-        const value = values[i] ? \`<mark>\${values[i]}</mark>\` : '';
-        return result + string + value;
-    }, '');
-}
-
-const highlightedText = highlight\`Hello \${name}, you are \${age} years old\`;
-
-// Optional Chaining (?.)
-const user = {
-    profile: {
-        social: {
-            twitter: '@john_doe'
-        }
-    },
-    preferences: {
-        theme: 'dark'
-    }
-};
-
-// Без optional chaining (небезпечно)
-// const twitter = user.profile.social.twitter; // Може видати помилку
-
-// З optional chaining (безпечно)
-const twitter = user.profile?.social?.twitter;
-const instagram = user.profile?.social?.instagram; // undefined
-const theme = user.preferences?.theme; // 'dark'
-
-// Optional chaining з методами
-const result = user.getData?.(); // Викличе метод, якщо він існує
-
-// Optional chaining з масивами
-const firstItem = user.items?.[0];
-const dynamicProp = user.profile?.[\`social_\${platform}\`];
-
-// Nullish Coalescing (??)
-const defaultName = user.name ?? 'Anonymous';
-const defaultAge = user.age ?? 0;
-
-// Різниця між || та ??
-const falsy = '';
-console.log(falsy || 'default');  // 'default' (|| реагує на все falsy)
-console.log(falsy ?? 'default');  // '' (?? тільки на null/undefined)
-
-// Logical Assignment Operators
-let config = {};
-config.theme ??= 'light';        // Присвоїти, якщо null/undefined
-config.debug ||= false;          // Присвоїти, якщо falsy
-config.feature &&= config.user; // Присвоїти, якщо truthy
-
-// Числові роздільники
-const million = 1_000_000;
-const binary = 0b1010_0001;
-const hex = 0xFF_EC_DE_5E;
-
-// BigInt для великих чисел
-const bigNumber = 123456789012345678901234567890n;
-const anotherBig = BigInt('123456789012345678901234567890');
-
-// Private Class Fields (сучасні браузери)
-class ModernClass {
-    #privateField = 'secret';
-    
-    #privateMethod() {
-        return 'private';
-    }
-    
-    publicMethod() {
-        return this.#privateField + this.#privateMethod();
-    }
-}
-
-// Top-level await (в модулях)
-// const data = await fetch('/api/data').then(r => r.json());
-
-// Оператор ?. для assignments
-// element.style?.setProperty?.('color', 'red');
-
-// String methods
-const text = 'Hello World';
-console.log(text.replaceAll('l', 'x')); // 'Hexxo Worxd'
-console.log(text.at(-1)); // 'd' (останній символ)
-
-// Array methods
-const numbers = [1, 2, 3, 4, 5];
-console.log(numbers.at(-1)); // 5 (останній елемент)
-
-// Object methods
-const entries = Object.entries(user);
-const fromEntries = Object.fromEntries(entries);
-const hasOwnProp = Object.hasOwn(user, 'profile'); // true`
+        "Спливання подій": `Спливання подій - це аспект подій в DOM, який означає, що події можуть поширюватися вгору по ієрархії елементів DOM після того, як вони були спровоковані. Спливання подій дозволяє реагувати на події на різних рівнях DOM-дерева без необхідності призначення обробників подій для кожного елемента окремо.`,
+        "Важливість спливання": `Для чого це важливо? 
+1. Доступність для різних рівнів DOM
+2. Зменшення дублювання коду 
+3. Можливість зупинити спливання`,
+        "Фази подій": `Фази подій - це концепція, що описує порядок, в якому події розгортаються та обробляються у браузері. 
+Існують 3 основні фази подій: 
+1. Фаза захоплення 
+2. Фаза цільового об'єкта
+3. Фаза спливання`,
+        "Фаза захоплення": "Це перша фаза розгортання подій, коли подія спускається вниз від кореня DOM-дерева до цільового елемента. Обробники подій викликаються в порядку від найвищого рівня предка до цільового елемента.",
+        "Фаза цільового об'єкта": "Відбувається, коли подія досягає цільового елемента, на якому вона була спровокована.",
+        "Фаза спливання": "Це остання фаза розгортання подій, коли подія починає підніматися вгору від цільового елемента до кореня DOM-дерева. Обробники подій викликаються в порядку від цільового елемента до найвищого рівня предка.",
+        "Механізм спливання": `Механізм спливання подій полягає в тому, що коли подія спрацьовує на конкретному елементі DOM, вона спочатку обробляється на цьому елементі, а потім починає підніматися вгору по ієрархії DOM. 
+Простими словами, коли подія відбувається на елементі, спочатку запускаються обробники на ньому, потім на його батькові, потім на інших предках і так до самого верху.
+Майже всі події спливають!`,
+        "Делегування подій": `Делегування подій - це підхід до обробки подій в JS, при якому обробники подій призначаються батьківському елементу для обробки подій, спровокованих дочірніми елементами.`,
+        "Коли використовувати делегування": `В яких випадках варто використовувати делегування? 
+1. Багато схожих елементів 
+2. Динамічно створені елементи`,
+        "Переваги делегування": `Оптимізація роботи з багатьма елементами - замість того, щоб призначати обробник кожному елементу окремо, ви можете використовувати один обробник на батьківському елементі.
+Можливість відслідковувати динамічно створені елементи - можна призначити обробник подій батьківському елементу під час завантаження сторінки, і цей обробник буде автоматично відслідковувати всі нові дочірні елементи, які з'являються на сторінці пізніше.`,
+        "BOM": `BOM (Browser Object Model) - це частина JS API, яка надає можливість взаємодії з браузером, оточенням, в якому виконується JS код. BOM дозволяє робити різні речі, пов'язані з браузером, такі як керування вікнами і фреймами, зміну URL, роботу з попередженнями і багато іншого. Він є частиною об'єкта window, який представляє веб-сторінку в браузері.`,
+        "BOM vs DOM": "DOM забезпечує доступ до вмісту сторінки (елементи, тексти, атрибути), а BOM надає доступ до браузерної функціональності. BOM дозволяє контролювати вікна браузера, отримувати доступ до історії переходів і багато іншого.",
+        "Об'єкт window": "Об'єкт window - це головний об'єкт BOM, який представляє веб-сторінку. Він доступний безпосередньо і має глобальну видимість, тобто можна звертатись з будь-якого місця коду.",
+        "Властивості window": `Властивість window.location - дозволяє отримати поточну URL сторінки або змінити URL
+Метод window.open() - цей метод відкриває нове вікно браузера або нову вкладку з вказаним URL
+Властивість window.innerWidth та window.innerHeight - ці властивості повертають розмір вікна браузера у пікселях`,
+        "URL": "URL (Uniform Resource Locator) - це рядок, який вказує адресу ресурсу в Інтернеті. URL складається з кількох частин, включаючи протокол, доменне ім'я, шлях до ресурсу та за необхідності параметри запиту.",
+        "Об'єкт Location": `Об'єкт Location надає доступ до різних властивостей та методів для роботи з URL поточної сторінки. Він доступний через властивість window.location.
+Основні можливості: отримання поточного URL, отримання компонентів URL, зміна URL, перевірка URL`,
+        "Об'єкт navigator": `Об'єкт navigator є частиною BOM і містить інформацію про браузер користувача, включаючи характеристики такі як назва браузера, версія, ОС та інше.
+navigator.userAgent - містить рядок, який містить інформацію про браузер та ОС користувача
+navigator.appName - повертає ім'я браузера 
+navigator.appVersion - містить інформацію про версію браузера 
+navigator.platform - повертає операційну систему користувача 
+navigator.language - містить інформацію про мову браузера користувача
+navigator.onLine - вказує, чи встановлено з'єднання з інтернетом`,
+        "Об'єкт history": `Об'єкт history - дозволяє взаємодіяти з історією переходів користувача в браузері. Можна також використовувати об'єкт для навігації назад та вперед в історії браузера, а також для отримання інформації про кількість записів в історії та поточний стан.`,
+        "Методи history": `Властивість length об'єкта history містить кількість записів в історії браузера.
+Об'єкт history надає методи back() та forward(), які дозволяють вам навігувати назад та вперед по історії браузера
+Метод go() для переходу на певну сторінку в історії, вказавши кількість кроків, на які треба перейти назад або вперед.`,
+        "Об'єкт screen": `Об'єкт screen надає інформацію про екран користувача, таку як розмір, роздільна здатність та інші характеристики екрана.
+Для отримання розміру екрана використовуємо властивості width та height
+Властивості availWidth та availHeight містять роздільну здатність екрана без урахування панелей інструментів браузера чи інших елементів.
+colorDepth - вказує кількість бітів на піксель для відтворення кольорів на екрані 
+pixelDepth - аналогічно до colorDepth, вказує кількість бітів на піксель`
+      }
     },
     {
       id: 10,
-      title: "Обробка помилок та відладка",
-      difficulty: "Intermediate",
-      duration: "35 min",
+      title: "Форми та регулярні вирази",
+      difficulty: "Середній",
+      duration: "50 хв",
       completed: false,
-      description: "Навчіться ефективно обробляти помилки та відлагоджувати JavaScript код.",
+      description: "Робота з HTML формами, валідація даних та використання регулярних виразів.",
       learningPoints: [
-        "Try-catch-finally конструкції",
-        "Створення власних типів помилок",
-        "Console API для відладки",
-        "Debugger та breakpoints"
+        "Атрибути форм: action, method, name",
+        "Валідація форм: required, pattern, min/max",
+        "Об'єкт FormData та його методи",
+        "Регулярні вирази та їх застосування"
       ],
       theory: {
-        "Типи помилок": "У JavaScript існують різні типи помилок: SyntaxError, ReferenceError, TypeError, RangeError. Кожен має своє призначення та ситуацію використання.",
-        "Error handling": "Правильна обробка помилок включає try-catch блоки, створення користувацьких помилок та graceful degradation.",
-        "Debugging": "Відладка включає використання console методів, debugger statement та інструментів розробника браузера."
-      },
-      codeExample: `// Основи обробки помилок
-try {
-    // Код, який може видати помилку
-    let result = riskyOperation();
-    console.log(result);
-} catch (error) {
-    // Обробка помилки
-    console.error('Сталася помилка:', error.message);
-    console.error('Stack trace:', error.stack);
-} finally {
-    // Виконується завжди
-    console.log('Блок finally виконався');
-}
-
-// Різні типи помилок
-function demonstrateErrors() {
-    try {
-        // SyntaxError - неправильний синтаксис
-        // eval('let a = ;'); // Видасть SyntaxError
-        
-        // ReferenceError - використання неоголошеної змінної
-        console.log(nonExistentVariable);
-        
-    } catch (error) {
-        if (error instanceof ReferenceError) {
-            console.log('Reference error occurred');
-        } else if (error instanceof TypeError) {
-            console.log('Type error occurred');
-        }
-    }
-}
-
-// Створення власних помилок
-class ValidationError extends Error {
-    constructor(message, field) {
-        super(message);
-        this.name = 'ValidationError';
-        this.field = field;
-    }
-}
-
-class NetworkError extends Error {
-    constructor(message, status) {
-        super(message);
-        this.name = 'NetworkError';
-        this.status = status;
-    }
-}
-
-// Використання власних помилок
-function validateUser(user) {
-    if (!user.email) {
-        throw new ValidationError('Email is required', 'email');
-    }
-    if (!user.email.includes('@')) {
-        throw new ValidationError('Invalid email format', 'email');
-    }
-}
-
-async function fetchUserData(id) {
-    try {
-        const response = await fetch(\`/api/users/\${id}\`);
-        
-        if (!response.ok) {
-            throw new NetworkError(
-                \`Failed to fetch user: \${response.statusText}\`,
-                response.status
-            );
-        }
-        
-        const user = await response.json();
-        validateUser(user);
-        
-        return user;
-    } catch (error) {
-        if (error instanceof ValidationError) {
-            console.error(\`Validation failed for field \${error.field}: \${error.message}\`);
-        } else if (error instanceof NetworkError) {
-            console.error(\`Network error (status \${error.status}): \${error.message}\`);
-        } else {
-            console.error('Unexpected error:', error);
-        }
-        throw error; // Re-throw для вищого рівня
-    }
-}
-
-// Console API для відладки
-const debugData = { name: 'John', age: 30, hobbies: ['coding', 'reading'] };
-
-console.log('Simple log');
-console.info('Information message');
-console.warn('Warning message');
-console.error('Error message');
-
-// Групування логів
-console.group('User Data');
-console.log('Name:', debugData.name);
-console.log('Age:', debugData.age);
-console.groupCollapsed('Hobbies'); // Згорнута група
-debugData.hobbies.forEach(hobby => console.log(hobby));
-console.groupEnd();
-console.groupEnd();
-
-// Таблиця
-console.table(debugData);
-console.table([
-    { name: 'John', age: 30 },
-    { name: 'Jane', age: 25 },
-    { name: 'Bob', age: 35 }
-]);
-
-// Вимірювання часу
-console.time('Operation Timer');
-// Якась операція
-for (let i = 0; i < 1000000; i++) {
-    // Симуляція роботи
-}
-console.timeEnd('Operation Timer');
-
-// Лічильник
-function someFunction() {
-    console.count('Function called'); // Рахує виклики
-}
-someFunction(); // Function called: 1
-someFunction(); // Function called: 2
-
-// Assert - перевірка умов
-console.assert(debugData.age > 0, 'Age should be positive');
-console.assert(debugData.name === 'Jane', 'Name should be Jane'); // Видасть повідомлення
-
-// Trace - показує stack trace
-function a() {
-    b();
-}
-function b() {
-    c();
-}
-function c() {
-    console.trace('Trace from function c');
-}
-a();
-
-// Debugger statement
-function complexFunction(data) {
-    let processed = data.map(item => {
-        debugger; // Браузер зупиниться тут при відкритих DevTools
-        return item * 2;
-    });
-    
-    return processed.filter(item => item > 10);
-}
-
-// Performance monitoring
-function monitorPerformance(fn, name) {
-    return function(...args) {
-        const start = performance.now();
-        const result = fn.apply(this, args);
-        const end = performance.now();
-        
-        console.log(\`\${name} took \${end - start} milliseconds\`);
-        return result;
-    };
-}
-
-const slowFunction = monitorPerformance(
-    (n) => {
-        let sum = 0;
-        for (let i = 0; i < n; i++) {
-            sum += i;
-        }
-        return sum;
+        "Веб-форми": `Веб-форми - це незамінний інструмент для збору інформації в інтернеті. Вони дозволяють користувачам вводити дані та взаємодіяти з веб-сайтами.
+Основні функції веб-форм включають в себе: 
+1. Збір інформації про користувача
+2. Взаємодія з користувачем 
+3. Збір інформації для аналітики 
+4. Здійснення оплати та пожертв
+5. Авторизація і автентифікація`,
+        "Атрибути action і method": `У HTML-формах існують різні атрибути, які визначають, як саме дані форми будуть оброблятися та надсилатися на сервер. 
+Два з найважливіших атрибутів - action і method.
+Action - куди відправити дані Тобто, атрибут action визначає URL-адресу, на яку будуть відправлені дані після натискання на кнопку «відправити». 
+Method - як відправити дані. Атрибут method вказує метод, який буде використовуватися для відправки даних на сервер. Два основні методи - GET і POST.
+GET - використовується для отримання даних з сервера. Дані передаються у URL-запитів.
+POST - використовується для надсилання даних на сервер у вигляді тіла запиту.`,
+        "Атрибут name": `Атрибут name вказує ім'я поля форми, яке буде використано як ключ для відправлення даних на сервер. Всі дані, введені користувачем в це поле, будуть відправлені під цим іменем у вигляді параметру.
+Роль атрибуту name важлива, оскільки вона дозволяє ідентифікувати дані на сервері та прив'язувати їх до конкретних полів форми. Це дозволяє легко обробляти і аналізувати введені користувачем дані.`,
+        "Атрибути валідації": `Атрибути та приклади їх використання: 
+1. Required вказує, що поле обов'язкове для заповнення
+2. Pattern визначає шаблон, якому повинні відповідати введені дані 
+3. Min та max встановлення мінімального та максимального допустимого значення для числових полів 
+4. minLength та maxLength встановлення мінімальної та максимальної кількості символів для текстових полів 
+5. Pattern з виразами можна використовувати регулярні вирази для визначення прийнятних значень`,
+        "Події елементів форми": `JS дозволяє створювати інтерактивні форми, які реагують на події, такі як натискання кнопки, введення тексту або відправка даних. Один з найпоширеніших способів використання подій на елементах форми - це валідація даних, які користувач вводить.
+Click - спрацьовує при натисканні на елемент 
+Submit - спрацьовує при відправці форми 
+Input - спрацьовує при введені даних в текстове поле або інший елемент 
+Change - спрацьовує при зміні значення елемента 
+Focus - спрацьовує при фокусуванні на елементі`,
+        "Робота з даними форми": `Використання властивостей value, checked і selected 
+1. Зчитування текстових полів: для отримання тексту, який користувач ввів у текстове поле, використовується властивість value 
+2. Зчитування прапорцевих (чекбоксів) полів: для чекбоксів та радіокнопок, властивість checked вказує, чи вони вибрані
+3. Зчитування значення вибраного варіанту (список): для вибору зі списку використовується властивість selected.`,
+        "Обробка подій форми": `1. Подія submit: спрацьовує при надсиланні форми
+2. Подія reset: спрацьовує, коли користувач натискає кнопку скидання форми.
+3. Подія change: спрацьовує при зміні значення поля форми.`,
+        "Об'єкт FormData": `Об'єкт FormData - це об'єкт JS, який дозволяє зручно збирати дані з форми та відправляти їх на сервер. Він автоматично перетворює дані в формат, який може легко обробляти сервер.
+Важливі аспекти використання FormData: 
+1. Автоматичне створення пар «ключ-значення»
+2. Додавання додаткових даних 
+3. Асинхронна відправка на сервер 
+4. Підтримка різних типів даних`,
+        "Методи FormData": `При роботі з об'єктом FormData можна використовувати різні методи для додавання, видалення та редагування даних у формі. 
+1. Append (name, value): метод дозволяє додавати пару «ключ-значення» до об'єкта FormData. Приймає 2 аргументи: ім'я ключа та значення 
+2. delete(name): видалення ключа та відповідного значення з об'єкта FormData.
+3. get(name): отримання значення, яке відповідає ключу name в об'єкті FormData.
+4. getAll(name): отримання масиву значень, якщо ключ має декілька значень 
+5. has(name): метод has перевіряє, чи існує ключ з ім'ям name в об'єкті FormData
+6. set(name, value): для зміни значення ключа
+7. keys(), values(), entries(): ці методи повертають ітератори для ключів, значень і пар «ключ-значення» відповідно.`,
+        "AJAX": `Технологія AJAX(Asynchronous JavaScript and XML) - дозволяє взаємодіяти з сервером асинхронно та без блокування веб-сторінки. 
+AJAX базується на використанні об'єкта XMLHttpRequest (XHR) або сучасного API fetch. Вони дозволяють виконувати HTTP-запити до сервера, такі як GET та POST, і обробляти відповідь асинхронно.`,
+        "Регулярні вирази": `Регулярні вирази - це шаблони, які використовуються для пошуку, визначення і вилучення текстових даних, які відповідають певним правилам. Вони дозволяють виразити складні умови для пошуку текстових відповідностей.
+В JS можна створити регулярний вираз, використовуючи об'єкт RegExp або літеральний запис. 
+Після створення регулярного виразу, можна використовувати його для пошуку в тексті за допомогою методу .test().`,
+        "Методи рядків з регулярними виразами": `Метод match - дозволяє знаходити всі відповідності регулярному виразу в рядку. Він повертає масив, що містить всі відповідності 
+Метод test - перевіряє, чи відповідає рядок регулярному виразу. Він повертає true, якщо є відповідність, і false, якщо немає
+Метод search - шукає позицію першої відповідності регулярному виразу в рядку. Він повертає індекс першої відповідності або -1, якщо відповідності не знайдено.
+Метод replace - дозволяє змінювати всі відповідності регулярного виразу у рядку на новий текст.`,
+        "Опції регулярних виразів": `При створенні регулярного виразу можна додавати опції, що модифікують його поведінку. Наприклад: 
+i - регістронезалежний пошук
+g - пошук всіх відповідностей у тексті 
+m - пошук в кожному рядку окремо`,
+        "Приклади застосування": "Приклади застосування регулярних виразів: пошук email-адреси, вилучення номерів телефонів, валідація email-адреси, валідація URL-адреси"
+      }
     },
-    'slowFunction'
-);
+    {
+      id: 11,
+      title: "Best Practices та чистий код",
+      difficulty: "Середній",
+      duration: "45 хв",
+      completed: false,
+      description: "Принципи написання якісного, читабельного та підтримуваного JavaScript коду.",
+      learningPoints: [
+        "Правила іменування змінних та функцій",
+        "Коментування коду",
+        "Оформлення та стиль коду",
+        "Оптимізація продуктивності"
+      ],
+      theory: {
+        "Загальні принципи": `1. Читабельність та зрозумілість коду 
+2. Підтримуваність та розширюваність проекту 
+3. Відсутність зайвих помилок та багів`,
+        "Неймінг": `Іменування змінних та функцій впливає на зрозумілість коду. Правильний неймінг покращує розуміння функцій та полегшує уникнення помилок.
+1. Дотримання конвенцій іменування 
+CamelCase - імена змінних та функцій пишуться з малої літери, окрім першої, і кожне нове слово починається з великої літери (calculateTotalAmount)
+snake_case - імена розділяються підкресленням (calculate_total_amount)
+PascalCase - кожне слово починається з великої літери (Person)`,
+        "Зрозумілі назви": `1. Зрозумілість - назви змінних повинні бути зрозумілими та легко читатися
+2. Описовість - імена мають описувати що саме робить функція`,
+        "Уникнення абревіатур": "Уникайте використання абревіатур та скорочень, які можуть бути незрозумілими для інших розробників.",
+        "Коментування": `Від якості коментарів залежить зрозумілість та підтримуваність коду 
+Коментарі для пояснення складних частин коду - основні види коментування - це додати пояснення до складних або нетривіальних частин коду. 
+Коментарі для документування API та публічних методів - документація API робить ваш код більш зрозумілим для інших розробників, які його використовують
+Уникнення зайвих коментарів - важливо не перевантажувати код зайвими коментарями. Якщо код сам по собі зрозумілий, зайві коментарі можуть створити більше плутанини.`,
+        "Оформлення коду": `Дотримання єдиного стилю - всі розробники в команді повинні користуватися однаковими правилами відступів та форматування, щоб код був послідовним та зрозумілим для всіх
+Використання автоматичних інструментів - для JS існують різні стандарти форматування, такі як ESLint, Airbnb JS Style Guide, Google JS Style Guide
+Prettier - це інструмент, який автоматично форматує код згідно з налаштованими правилами`,
+        "Ефективність та оптимізація": `Приклади неоптимальних структур даних:
+Зайве витрачання пам'яті
+Базові умови вибору структур 
+Оптимізації коду для покращення продуктивності`,
+        "Гарячі точки": "Один з перших кроків при оптимізації коду - це ідентифікація «гарячих точок» або місць, де програма витрачає найбільше часу. Для цього можна використовувати DevTools або зовнішні профілювальні програми."
+      }
+    },
+    {
+      id: 12,
+      title: "WebStorage та JSON",
+      difficulty: "Середній",
+      duration: "40 хв",
+      completed: false,
+      description: "Робота з локальним сховищем браузера та форматом JSON.",
+      learningPoints: [
+        "LocalStorage vs SessionStorage",
+        "JSON: серіалізація та десеріалізація",
+        "Cookies та їх обмеження",
+        "Збереження складних об'єктів"
+      ],
+      theory: {
+        "JSON": `JSON (JavaScript Object Notation) - це легкий та легко читаний формат обміну даними. Він широко використовується для передачі даних між веб-серверами та клієнтськими додатками.
+Представляє дані у вигляді тексту, що дозволяє легко обмінювати інформацію між різними мовами програмування.`,
+        "Використання JSON": `Парсинг JSON: у JS існує функція JSON.parse(), яка дозволяє перетворювати JSON-рядок у об'єкт JS.
+Серіалізація в JSON: для перетворення об'єкту JS у JSON-рядок використовується метод JSON.stringify()`,
+        "Валідація JSON": "Щоб переконатися чи JSON валідний, використовують функцію JSON.parse() і обробку винятків. Якщо JSON неправильний, це викличе виняток, і його можна обробити.",
+        "Застосування JSON": `1. Збереження конфігурацій: JSON використовується для збереження конфігураційних налаштувань додатків
+2. Обмін даними з сервером: JSON є популярним форматом для обміну даними між клієнтськими додатками та серверами, наприклад, при використанні API
+3. Локальне сховище: JSON дозволяє зберігати дані локально на клієнтському боці, використовуючи LocalStorage або SessionStorage`,
+        "LocalStorage": `LocalStorage - це один із механізмів WebStorage в JS, який дозволяє зберігати дані на боці клієнта в браузері.
+Цей механізм дозволяє зберігати дані на довший термін, навіть після закриття браузера або перезавантаження сторінки.
+LocalStorage має кілька важливих особливостей та можливостей: 
+1. Постійність даних 
+2. Обмеження обсягу (5-10МБ в залежності від браузера)
+3. Легкий доступ до даних 
+4. Безпека і обмеження`,
+        "SessionStorage": "SessionStorage - це механізм для збереження даних на боці клієнта в рамках однієї сесії браузера. Дані зберігаються лише на час тривалості сесії користувача.",
+        "LocalStorage vs SessionStorage": "Основна відмінність в тому, що LocalStorage зберігає дані назавжди, а SessionStorage - лише на тривалість однієї сесії браузера.",
+        "Cookies": `Cookies - це невеликі фрагменти даних, які веб-сервери відправляють на браузер користувача, а браузер зберігає їх і повертає знову при кожному запиті до сервера.
+В JS використовується document.cookie для роботи з кулі.`,
+        "Призначення Cookies": "Основне призначення - це збереження інформації між запитами користувача на веб-сайт. Дозволяють серверам зберігати стан та інші дані для кожного користувача окремо. Це корисно для реалізації таких функцій, як автентифікація, збереження налаштувань, облікові записи користувачів та багато інших.",
+        "Переваги та недоліки Cookies": `Основна перевага - стійкість до перезавантаження сторінки або закриття браузера. Можуть мати встановлений термін дії. Це дозволяє зберігати стан автентифікації, рекламні дані та іншу інформацію.
+Недоліки: обмеження за розміром (до 4КБ).`
+      }
+    },
+    {
+      id: 13,
+      title: "ООП в JavaScript",
+      difficulty: "Просунутий",
+      duration: "65 хв",
+      completed: false,
+      description: "Об'єктно-орієнтоване програмування: принципи, прототипи, класи та наслідування.",
+      learningPoints: [
+        "Принципи ООП: інкапсуляція, наслідування, поліморфізм",
+        "Прототипи та прототипне наслідування",
+        "ES6 класи та їх особливості",
+        "Геттери, сетери та статичні методи"
+      ],
+      theory: {
+        "ООП в JavaScript": `Об'єктно-орієнтований JavaScript (ООП) - це підхід до програмування, який дозволяє створювати структуровані та ефективні програми за допомогою об'єктів та класів.
+ООП - це спосіб написання коду, що дозволяє створювати об'єкти з допомогою одного об'єкта.
+Загальний об'єкт називається планом, проєктом або схемою (blueprint), а створювані з його допомогою об'єкти - екземплярами (instances)`,
+        "Екземпляри": "Кожен екземпляр має властивості, що успадковуються від батька, і власні властивості.",
+        "Інкапсуляція": `Інкапсуляція - це механізм, що дозволяє обмежити доступ до даних та методів об'єкта та приховувати їх від зовнішнього світу. 
+У JS до ES6 інкапсуляція була обмеженою через відсутність модифікаторів доступу, таких як private, protected і public.`,
+        "Спадкування": "Спадкування - це потужний механізм, який дозволяє створювати нові класи на основі існуючих класів. При спадкуванні новий клас успадковує властивості та методи від батьківського класу, що полегшує повторне використання коду та розширення функціональності.",
+        "Поліморфізм": `Поліморфізм - це принцип, що дозволяє об'єктам різних класів відповідати на однакові запити чи виклики методів за допомогою одного і того ж інтерфейсу.
+Поліморфізм може бути досягнутий за допомогою функцій-конструкторів.`,
+        "Абстракція": "Абстракція - це процес виділення суттєвих характеристик об'єкта та приховування зайвих деталей. Абстракція дозволяє спростити взаємодію з об'єктами, забезпечуючи інтерфейс для їх використання та приховуючи реалізацію деталей.",
+        "Геттери та сетери": "Геттери та селери дозволяють контролювати доступ до властивостей об'єктів.",
+        "Геттери": `Геттери - це функції, які дозволяють отримувати значення властивостей об'єктів. Вони підходять для забезпечення безпечного та контрольованого доступу до даних. 
+Створення: get + ім'я властивості`,
+        "Сетери": `Сетери - це функції, які дозволяють змінювати значення властивостей об'єктів. Вони корисні для контролю за даними та валідації введених значень.
+Створення: set + ім'я властивості`,
+        "Захист властивостей": "Геттери та сетери можуть використовуватися для захисту властивостей об'єктів від некоректного доступу та невірних значень.",
+        "Прототипи": "В JS кожен об'єкт має посилання на інший об'єкт, відомий як «прототип». Прототип визначає базовий набір властивостей та методів, які спільні для всіх об'єктів, створених на основі цього прототипу.",
+        "Властивості та методи прототипів": "Властивості та методи прототипу можуть бути використані всіма об'єктами, які успадковують від даного прототипу.",
+        "Створення власних прототипів": "Можна створювати власні прототипи для об'єктів. Це корисно, коли хочемо створити багато об'єктів зі спільними властивостями та методами.",
+        "Ланцюжки прототипів": `JS дозволяє створювати ланцюжки прототипів, де один об'єкт може мати посилання на інший об'єкт, який, в свою чергу, може мати посилання на інший, і так далі.
+Це дозволяє спадкувати властивості та методи від більшого числа прототипів.`
+      }
+    },
+    {
+      id: 14,
+      title: "Класи",
+      difficulty: "Просунутий",
+      duration: "55 хв",
+      completed: false,
+      description: "ES6 класи, конструктори, наслідування та статичні методи.",
+      learningPoints: [
+        "Створення класів та конструкторів",
+        "Наслідування з extends та super",
+        "Статичні методи та властивості",
+        "Приватні поля та методи"
+      ],
+      theory: {
+        "Переваги класів": `Переваги використання класів у програмуванні:
+Організація коду 
+Полегшення створення об'єктів 
+Спадкування та розширення 
+Зрозумілість 
+Модульність`,
+        "Створення конструктора класу": `Конструктор - це метод з ім'ям constructor, який викликається автоматично при створенні нового екземпляру класу. 
+Основна його роль - ініціалізація об'єкта, тобто задання його початкового стану та властивостей.`,
+        "Створення об'єктів": "При створенні об'єкта за допомогою класу, конструктор буде автоматично викликаний для ініціалізації властивостей об'єкта",
+        "Ініціалізація об'єктів": "Один з ключових аспектів конструктора - це можливість ініціалізувати об'єкт певним початковим станом.",
+        "Призначення конструктора": "Конструктор класу використовується для надання об'єктам початкового стану та ініціалізації їхніх властивостей.",
+        "Спадкування": "Спадкування в програмуванні - це механізм, що дозволяє класу (підкласу) успадковувати властивості та методи іншого класу (батьківського класу). У JS цей механізм реалізується за допомогою ключового слова extends.",
+        "Ключове слово super": "У конструкторі підкласу використовуємо ключове слово super для виклику конструктора батьківського класу. Це необхідно для правильної ініціалізація властивостей, успадкованих від батьківського класу.",
+        "Модифікатор public": "Модифікатор public є стандартним для всіх властивостей та методів у класі. Це означає, що вони доступні для використання ззовні класу та можуть бути викликані чи змінені з інших частин програми",
+        "Модифікатор private": "Модифікатор private дозволяє обмежити доступ до властивостей та методів тільки всередині самого класу.",
+        "Статичні методи": "Дозволяють створювати функціональність, яка відноситься до класу в цілому, а не до конкретних екземплярів. Це корисно для реалізації загальної логіки, яка не пов'язана з конкретним об'єктом.",
+        "Переваги статичних членів": `Переваги використання статичних членів класу:
+Загальні функції 
+Легка доступність 
+Збереження загальних даних`,
+        "Створення статичних методів": "Для створення використовуємо ключове слово static. Це робить метод чи властивість доступними не для екземплярів класу, а для самого класу.",
+        "Використання статичних членів": "Статичні методи та властивості дозволяють реалізувати загальні функції, що не пов'язані з конкретним екземпляром класу."
+      }
+    },
+    {
+      id: 15,
+      title: "Асинхронне програмування",
+      difficulty: "Просунутий",
+      duration: "70 хв",
+      completed: false,
+      description: "Опануйте асинхронний JavaScript: Promise, async/await, Event Loop та обробку помилок.",
+      learningPoints: [
+        "Синхронний vs асинхронний код",
+        "Event Loop та його компоненти",
+        "Promise та його методи",
+        "async/await синтаксис"
+      ],
+      theory: {
+        "Синхронний та асинхронний код": `Синхронний код виконується послідовно, операція за операцією. Кожен блокуючий виклик чекає завершення попереднього, що може призводити до зупинки виконання.
+Асинхронний код виконується паралельно, без очікування завершення попередніх операцій.`,
+        "Важливість асинхронності": `Важливість асинхронності для JS:
+Завантаження ресурсів
+Робота з сервером
+Запуск функцій в фоновому режимі 
+Очікування подій 
+Паралельність операцій`,
+        "setInterval, setTimeout": `setInterval дозволяє виконувати функцію через певний інтервал часу. Це корисно для періодичних завдань, таких як оновлення часових годинників або відправлення запитів на сервер 
+setTimeout дозволяє досягти затримку виклику функції.
+clearTimeout для управління асинхронним кодом та його відміни`,
+        "Деталі роботи таймерів": `setInterval Вбудований метод JS, який використовується для періодичного виклику функції через зазначений проміжок часу.
+Синтаксис: setInterval(callback, delay)
+Callback - функція, яку потрібно викликати 
+Delay - інтервал в мілісекундах
 
-// Global error handling
-window.addEventListener('error', (event) => {
-    console.error('Global error:', event.error);
-    // Відправити помилку на сервер для моніторингу
+setTimeout - використовується для виклику функції, але тільки один раз після затримки 
+Синтаксис: setTimeout(callback, delay)
+Callback - функція для виклику
+Delay - затримка в мілісекундах 
+Виклик setTimeout буде повертати ідентифікатор 
+
+clearTimeout - для відміни запланованого виклику функції, який був створений за допомогою setTimeout. Використовуємо, коли хочемо скасувати подальше виконання коду, який був запланований для виклику після певного періоду затримки.
+Основний принцип роботи: передача ідентифікатора таймера, який ви хочете скасувати.`,
+        "Event Loop": `Event Loop (петля подій) - це механізм у багатьох мов програмування, включаючи JS, який керує потоком виконання подій або запитів в програмі.
+Основна ідея - програмам необхідно постійно очікувати на події або запити, які можуть виникнути асинхронно. Замість блокування виконання програми, Event Loop дозволяє програмі продовжувати виконувати інші завдання, поки очікується на результат або подію.`,
+        "Ідея циклу подій": "Існує нескінченний цикл подій, в якому JS рушій чекає своє завдання, виконує його і чекає на нове.",
+        "Основні частини Event Loop": `Call Stack (стек). Являє собою потік виконання коду JS. Event Loop виконує одне просте завдання - здійснює контроль стеку викликів та черги зворотних викликів. Якщо стек порожній, цикл подій візьме першу подію з черги і відправить її в стек викликів, який запустить. При виклику нового способу зверху стека виділяється окремий блок пам'яті. Стек викликів відповідає за відстеження всіх операцій у черзі, які мають бути здійснені. При завершенні черги вона витягується зі стека.
+
+Heap (купа). Це область пам'яті, де розміщуються об'єкти. Куча не має строгого порядку і дозволяє динамічно виділяти і звільняти пам'ять для об'єктів.
+
+Queue (черга). Черга подій відповідає за надсилання нових функцій на трек обробки. Він слідує структурі даних черги, щоб підтримувати правильну послідовність, в якій всі операції повинні надійти на виконання. Якщо простіше, то це і є список завдань, які повинні вирушити на обробку і чекають свій час.
+
+Web API. Не є частиною JS, вони створені на основі JS. Щоразу, коли викликається асинхронна функція, вона відправляється до API браузера. На основі команди, отриманої зі стеку викликів, API запускає власну однопотокову операцію.`,
+        "Черга подій": `Під час виклику setTimeout(), браузер або Node.js запускають таймер. Після закінчення таймера, як тайм-аут, функція зворотного виклику поміститься в чергу подій.
+Черга подій також є місцем, де ініційовані користувачем події розміщуються в чергу до того, як коду зможе на них відреагувати.
+Event Loop надає пріоритет стеку викликів. Спочатку він обробляє все, що знаходить у стеку викликів, а коли там нічого не лишається, переходить до обробки черги подій.`,
+        "Callback Hell": `Callback Hell виник через особливості асинхронного програмування в JS. За невеликий час використання цього підходу, код може стати густим, непереглядним та важким для управління.
+Суть проблеми: вкладеність колбеків та важкість читання коду 
+Головна проблема Callback Hell - це велика кількість вкладених колбеків. Коли є багато асинхронних операцій, які повинні відбуватися послідовно, код виглядає подібно до «п'ятиконтурного пекла».`,
+        "Promise": `Promise - це об'єкт, який представляє результат або помилку асинхронної операції та дозволяє вас працювати з результатом асинхронного запиту в подальший час.`,
+        "Структура Promise": `Створення промісу:
+const promise = new Promise((resolve, reject) => {
+  // Асинхронний код, який вирішує (resolve) або відхиляє (reject) проміс
 });
 
-window.addEventListener('unhandledrejection', (event) => {
-    console.error('Unhandled promise rejection:', event.reason);
-    event.preventDefault(); // Запобігти виводу в консоль
-});
+Методи Promise:
+then() - викликається, коли проміс вирішується успішно 
+catch() - викликається, коли проміс відхиляється
+finally() - викликається незалежно від того, чи вирішується, чи відхиляється проміс`,
+        "Переваги Promise": `Переваги в порівнянні з Callback Hell:
+Читабельність коду 
+Управління помилками 
+Зручність роботи з асинхронним кодом`
+      }
+    },
+    {
+      id: 16,
+      title: "Ajax та async/await",
+      difficulty: "Просунутий",
+      duration: "60 хв",
+      completed: false,
+      description: "Робота з сервером: Ajax, fetch API, async/await та HTTP методи.",
+      learningPoints: [
+        "Ajax та XMLHttpRequest",
+        "Fetch API та його переваги",
+        "HTTP методи: GET, POST, PUT, DELETE",
+        "async/await синтаксис"
+      ],
+      theory: {
+        "Ajax": `Ajax (Asynchronous JavaScript and XML)- це метод взаємодії з сервером без перевантаження сторінки, що дозволяє асинхронно відправляти та отримувати дані.
+Ajax - це техніка асинхронного обміну даними між клієнтом та сервером без необхідності перезавантаження сторінки. Ця технологія дозволяє виконувати запити до сервера, отримувати та відправляти дані, а потім динамічно оновлювати частини сторінки.`,
+        "Роль Ajax": "Ajax грає ключову роль у створенні динамічних та інтерактивних веб-застосунків. За допомогою Ajax, ви можете асинхронно завантажувати дані, взаємодіяти з сервером, оновлювати інформацію на сторінці та створювати більш плавні та швидкі веб-додатки.",
+        "XMLHttpRequest": `Об'єкт XMLHttpRequest дозволяє асинхронно взаємодіяти з сервером. Основні етапи використання XMLHttpRequest: створення об'єкта, визначення типу запиту (GET, POST), вказання адреси сервера та обробку відповіді.`,
+        "Синтаксис XMLHttpRequest": `Створення об'єкта XMLHttpRequest:
+Для створення об'єкта XMLHttpRequest використовується конструктор: 
+Const xhr = new XMLHttpRequest();
 
-// Utility для safe execution
-function safeExecute(fn, fallback = null) {
-    try {
-        return fn();
-    } catch (error) {
-        console.error('Safe execution failed:', error);
-        return fallback;
-    }
-}
+Відкриття запиту 
+Метод open() використовується для налаштування параметрів запиту, таких як тип (GET, POST) та адреса сервера 
 
-const result = safeExecute(() => {
-    return JSON.parse(potentiallyInvalidJSON);
-}, { error: 'Invalid JSON' });`
+Визначення функції зворотного виклику 
+Метод onreadystatechange встановлює функцію зворотного виклику, яка буде викликана при зміні стану запиту 
+
+Відправлення запиту 
+Метод send() використовується для відправлення запиту на сервер 
+
+Обробка відповіді 
+Функція зворотного виклику перевіряє стан та статус запиту. Якщо стан - 4 (завершено), а статус - 200 (ОК), то виводиться вміст відповіді.`,
+        "Fetch API": `fetch API - це інтерфейс, який надає вам можливість контролювати різні параметри запиту, такі як метод, заголовки, тіло, режим, перенаправлення тощо. Він надає зручний і простий спосіб взаємодії з сервером та отримання або відправлення даних. Основні особливості fetch включаються проміс-підтримку та вбудовані методи для обробки HTTP-відповідей.`,
+        "HTTP методи": `GET, POST, PUT, DELETE - це 4 основні методи HTTP-запитів, які використовуються для взаємодії між клієнтом і сервером у веб-розробці.
+Ці методи HTTP є частиною стандарту REST і використовуються для забезпечення повноцінної реалізації CRUD-операцій (створення, читання, оновлення, видалення) у веб-розробці.`,
+        "GET-запит": `Використовується для отримання даних з сервера 
+Підходить для запитів, які не змінюють стан сервера і призначені лише для отримання інформації`,
+        "POST-запит": `Використовується для надсилання даних на сервер для обробки або збереження 
+Параметри передаються у тілі запиту
+Використовується там, де потрібно змінити стан сервера`,
+        "PUT-запит": `Використовується для оновлення чи створення ресурсу на сервері за вказаним URL
+Якщо ресурс існує, він оновлюється; якщо відсутність - створюється новий 
+Запит має містити повний опис ресурсу`,
+        "DELETE-запит": `Використовується для видалення ресурсу на сервері за вказаним URL
+Запит не має тіла, оскільки весь інформаційний вміст передається у URL`,
+        "Async...await": "Async...await є синтаксичним цукром над Promise, що робить код асинхронного JS більш зрозумілим та зручним для написання. Ключове слово async вказує, що функція повертає Promise, а await використовується для очікування виконання Promise та отримання його результату.",
+        "Async функції": "Ключове слово async використовується для визначення функції, яка повертає обіцянку (promise). Функція, яка має async перед своєю декларацією, автоматично повертає Promise",
+        "Await оператор": `Оператор await працює тільки в межах async функцій. Він призупиняє виконання функції до тих пір, поки передана обіцянка не буде виконана або відхилена, та повертає його результат.
+await призупиняє виконання функції до тих пір, поки проміс не виконується, а потім відновлює її з результатом проміса.`,
+        "Використання async/await": `Використання: 
+Використання в контексті функцій
+Використання в контексті обіцянок`
+      }
+    },
+    {
+      id: 17,
+      title: "Бібліотеки та npm",
+      difficulty: "Просунутий",
+      duration: "50 хв",
+      completed: false,
+      description: "Робота з пакетним менеджером npm та популярними JavaScript бібліотеками.",
+      learningPoints: [
+        "npm та package.json",
+        "Встановлення та управління пакетами",
+        "jQuery: основи та можливості",
+        "Використання зовнішніх бібліотек"
+      ],
+      theory: {
+        "npm": `Npm (node package manager) - це менеджер пакетів Node.js. 
+Спочатку npm створювався як система управління пакетами для Node.js, але в наші дні він використовується і для розробки фронтенд-пакетів на JavaScript.`,
+        "package.json": `Файл package.json - це конфігураційний файл проекту, де містяться основні відомості, такі як назва проекту, версія, автор, а також перелік залежностей. Створення його можливе за допомогою команди: npm init`,
+        "package-lock.json": "Файл package-lock.json використовується для фіксації версій всіх встановлених пакетів. Це гарантує, що всі розробники, які використовують проект, отримають однакові версії пакетів, що сприяє стабільності та однаковості серед учасників команди.",
+        "Встановлення залежностей": "Якщо проект має файл package.json, то встановити всі залежності цього проекту можна такою командою: npm install",
+        "Встановлення окремого пакету": `За допомогою команди npm install <package-name>, розробники можуть легко встановлювати пакети, необхідні для їхніх проектів.
+Npm install lodash`,
+        "Запуск скриптів": `Файл  package.json підтримує можливість опису команд (скриптів), які можна запускати за допомогою такої конструкції
+Npm run <task-name>`,
+        "Встановлення пакетів": `При встановленні пакетів з використанням npm доступні два варіанти встановлення: локальна та глобальна.
+Глобальне встановлення пакетів виконується за допомогою прапора -g
+Npm install -g lodash`,
+        "node_modules": "Папка node_modules містить велику кількість файлів пакетів, які розраховані на внутрішнє використання. з метою зменшення обсягу репозиторію та прискорення клонування, рекомендується додати цю папку до файлу .gitignore, щоб вона не включалася до репозиторію та не зберігалася в системах контролю версій.",
+        "jQuery": "jQuery - це одна з найпопулярніших та використовуваних бібліотек JavaScript, яка спрощує взаємодію з DOM, обробку подій та роботу з AJAX-запитами.",
+        "Проблеми що вирішує jQuery": `Різні реалізації DOM в різних браузерах 
+Вибір елементів та події 
+Анімація та зміна стилів 
+AJAX-запити 
+Кросбраузерна обробка подій`,
+        "Можливості jQuery": `Одна з ключових можливостей: легкий та зручний вибір елементів за допомогою CSS-подібного синтаксису.
+jQuery надає розгалужену функціональність для обробки подій, зміни стилів, анімації та взаємодії з сервером через AJAX.
+jQuery використовує лаконічний та зрозумілий синтаксис, що дозволяє легко зрозуміти та модифікувати код`,
+        "Slick Slider": `Slick Slider - це легка, гнучка та потужна бібліотека для створення слайдерів в веб-додатках. Вона надає різноманітні опції та можливості для керування та поведінкою слайдера.
+Переваги використання слайдерів: 
+Візуальна привабливість 
+Збільшення участі користувачів
+Адаптивність`
+      }
     }
   ]
 };
